@@ -3,7 +3,12 @@ import Plan from '../models/Plan';
 
 class PlanController {
   async index(req, res) {
-    return res.json({ msg: 'listou' });
+    const plans = await Plan.findAll({
+      order: ['price'],
+      attributes: ['id', 'title', 'duration', 'price'],
+    });
+
+    return res.json(plans);
   }
 
   async store(req, res) {
@@ -31,11 +36,39 @@ class PlanController {
   }
 
   async update(req, res) {
-    return res.json({ msg: 'atualizou' });
+    const schema = Yup.object().shape({
+      title: Yup.string(),
+      duration: Yup.number(),
+      price: Yup.number(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validations fails' });
+    }
+
+    const plan = await Plan.findByPk(req.params.id);
+
+    const { title } = req.body;
+
+    if (title !== plan.title) {
+      const titleExist = await Plan.findOne({ where: { title } });
+
+      if (titleExist) {
+        return res.status(400).json({ error: 'Plan title already exists' });
+      }
+    }
+
+    await plan.update(req.body);
+
+    return res.json(plan);
   }
 
   async delete(req, res) {
-    return res.json({ msg: 'deletou' });
+    const plan = await Plan.findByPk(req.params.id);
+
+    await plan.destroy();
+
+    return res.json({ msg: `${plan.title} plan removed` });
   }
 }
 
