@@ -4,13 +4,15 @@ import { addMonths, isBefore, parseISO } from 'date-fns';
 import Plan from '../models/Plan';
 import Enrollment from '../models/Enrollment';
 import Student from '../models/Student';
+import Queue from '../../lib/Queue';
+import WelcomeMail from '../jobs/WelcomeMail';
 
 class EnrollmentController {
   async index(req, res) {
     const { page = 1 } = req.query;
 
     const enrollments = await Enrollment.findAll({
-      attributes: ['start_date', 'end_date', 'price'],
+      attributes: ['id', 'start_date', 'end_date', 'price'],
       limit: 20,
       offset: (page - 1) * 20,
       include: [
@@ -52,7 +54,9 @@ class EnrollmentController {
       attributes: ['title', 'duration', 'price'],
     });
 
-    const { name } = await Student.findOne({ where: { id: student_id } });
+    const { name, email } = await Student.findOne({
+      where: { id: student_id },
+    });
 
     const end_date = addMonths(parseISO(start_date), plan.duration);
 
@@ -72,7 +76,16 @@ class EnrollmentController {
 
     const { id } = await Enrollment.create(enrollment);
 
-    return res.json({ id, name, start_date, end_date, price, plan });
+    await Queue.add(WelcomeMail.key, {
+      name,
+      email,
+      start_date,
+      end_date,
+      price,
+      plan,
+    });
+
+    return res.json({ id, name, email, start_date, end_date, price, plan });
   }
 
   async update(req, res) {
