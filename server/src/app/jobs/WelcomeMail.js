@@ -4,26 +4,23 @@ import Mail from '../../lib/Mail';
 
 class WelcomeMail {
   get key() {
-    return 'CancellationMail';
+    return 'WelcomeMail';
   }
 
   async handle({ data }) {
-    const { appointment } = data;
+    const { name, email, start_date, end_date, price, plan } = data;
 
     await Mail.sendMail({
-      to: `${appointment.provider.name} <${appointment.provider.email}>`,
-      subject: 'Agendamento cancelado',
-      template: 'cancellation',
+      to: `${name} <${email}>`,
+      subject: 'Matricula realizada',
+      template: 'welcome',
       context: {
-        provider: appointment.provider.name,
-        user: appointment.user.name,
-        date: format(
-          parseISO(appointment.date),
-          "'dia' dd 'de' MMMM', às' H:mm'h'",
-          {
-            locale: pt,
-          }
-        ),
+        student: name,
+        title: plan.title,
+        duration: plan.duration,
+        price,
+        start_date: format(parseISO(start_date), 'dd/MM/yyyy', { locale: pt }),
+        end_date: format(parseISO(end_date), 'dd/MM/yyyy', { locale: pt }),
       },
     });
   }
