@@ -1,29 +1,39 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import logo from '~/assets/logo.svg';
-import { Container, Content, Profile } from './styles';
+import logo from '~/assets/logo-header.svg';
+
+import { signOut } from '~/store/modules/auth/actions';
+
+import { Container, Content, Profile, LinkMenu } from './styles';
 
 export default function Header() {
+  const dispatch = useDispatch();
+
   const profile = useSelector(state => state.user.profile);
+
+  function handleSignOut() {
+    dispatch(signOut());
+  }
 
   return (
     <Container>
       <Content>
         <nav>
-          <img src={logo} alt="" />
-          <Link to="/student">ALUNOS</Link>
-          <Link to="/plan">PLANOS</Link>
-          <Link to="/enrollment">MATRÍCULAS</Link>
-          <Link to="/helpOrder">PEDIDOS DE AUXÍLIO</Link>
+          <img src={logo} alt="Gympoint" />
+          <LinkMenu to="/student">ALUNOS</LinkMenu>
+          <LinkMenu to="/plan">PLANOS</LinkMenu>
+          <LinkMenu to="/enrollment">MATRÍCULAS</LinkMenu>
+          <LinkMenu to="/helpOrder">PEDIDOS DE AUXÍLIO</LinkMenu>
         </nav>
 
         <aside>
           <Profile>
             <div>
               <strong>{profile.name}</strong>
-              <span>Sair do sistema</span>
+              <button type="submit" onClick={handleSignOut}>
+                <span>sair do sistema</span>
+              </button>
             </div>
           </Profile>
         </aside>
