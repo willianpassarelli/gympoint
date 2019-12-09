@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { MdAdd, MdSearch } from 'react-icons/md';
+import { MdSearch } from 'react-icons/md';
 
 import Modal from '~/components/Modal';
+import Button from '~/components/Button';
 
 import api from '~/services/api';
 
-import { Container, SearchBar, StudentList, RegisterButton } from './styles';
+import { Container, SearchBar, StudentList } from './styles';
 
 export default function Student() {
   const [students, setStudents] = useState([]);
@@ -74,10 +75,7 @@ export default function Student() {
       <header>
         <strong>Gerenciando alunos</strong>
         <div>
-          <RegisterButton to="/student/form">
-            <MdAdd size={20} color="#fff" />
-            <span>CADASTRAR</span>
-          </RegisterButton>
+          <Button register path="/student/form" />
           <SearchBar>
             <MdSearch size={16} color="#999" />
             <input

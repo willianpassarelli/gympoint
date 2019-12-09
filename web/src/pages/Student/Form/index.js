@@ -13,21 +13,8 @@ export default function StudentForm({ match }) {
   const { id } = match.params;
 
   const [student, setStudent] = useState([]);
-
-  async function handleSubmit(
-    { age, height, weight, name, email },
-    { resetForm }
-  ) {
-    try {
-      const studentData = { age, height, name, email, weight: `${weight}kg` };
-
-      await api.post('students', studentData);
-      resetForm();
-      toast.success('Aluno cadastrado com sucesso!');
-    } catch (err) {
-      toast.error('Erro ao cadastrar aluno.');
-    }
-  }
+  const [height, setHeight] = useState('');
+  const [age, setAge] = useState('');
 
   useEffect(() => {
     async function loadData() {
@@ -39,14 +26,36 @@ export default function StudentForm({ match }) {
         });
 
         setStudent(response.data);
+        setHeight(response.data.height);
+        setAge(response.data.age);
       }
     }
     loadData();
   }, [id]);
 
+  async function handleSubmit(data, { resetForm }) {
+    try {
+      await api.post('students', data);
+      resetForm();
+      toast.success('Aluno cadastrado com sucesso!');
+    } catch (err) {
+      toast.error('Erro ao cadastrar aluno.');
+    }
+  }
+
+  async function handleEdit(data) {
+    try {
+      await api.put(`students/${id}`, data);
+
+      toast.success('Dados do aluno atualizado com sucesso!');
+    } catch (err) {
+      toast.error('Erro ao atualizar dados do aluno.');
+    }
+  }
+
   return (
     <Container>
-      <Form onSubmit={handleSubmit} initialData={student}>
+      <Form onSubmit={id ? handleEdit : handleSubmit} initialData={student}>
         <header>
           <strong>{id ? 'Edição de aluno' : 'Cadastro de aluno'}</strong>
           <div>
@@ -67,17 +76,33 @@ export default function StudentForm({ match }) {
           <Row>
             <Field>
               <strong>IDADE</strong>
-              <InputMask id="age" mask="99" name="age">
+              <InputMask
+                id="age"
+                mask="99"
+                name="age"
+                value={age}
+                onChange={e => setAge(e.target.value)}
+              >
                 {inputProps => <Input {...inputProps} id="age" name="age" />}
               </InputMask>
             </Field>
             <Field>
               <strong>PESO (em kg)</strong>
-              <Input id="weight" name="weight" placeholder="0kg" />
+              <Input
+                id="weight"
+                name="weight"
+                type="number"
+                placeholder="0kg"
+              />
             </Field>
             <Field>
               <strong>Altura</strong>
-              <InputMask mask="9.99m" name="height">
+              <InputMask
+                mask="9.99m"
+                name="height"
+                value={height}
+                onChange={e => setHeight(e.target.value)}
+              >
                 {inputProps => (
                   <Input
                     {...inputProps}

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 
 export const Container = styled.div`
-  max-width: 1200px;
+  max-width: 900px;
   margin: 50px auto;
 
   display: flex;
@@ -25,30 +25,7 @@ export const Container = styled.div`
   }
 `;
 
-export const SearchBar = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  background: #fff;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  width: 237px;
-  padding: 0 15px;
-  margin-left: 15px;
-
-  input {
-    border: 0;
-    width: 100%;
-    background: transparent;
-    font-weight: normal;
-
-    ::placeholder {
-      color: #999;
-    }
-  }
-`;
-
-export const StudentList = styled.div`
+export const PlanList = styled.div`
   width: 100%;
   padding: 30px;
   background: #fff;
@@ -73,27 +50,34 @@ export const StudentList = styled.div`
       border-bottom: 1px solid #eee;
     }
 
-    th.name {
+    th.title {
       width: 40%;
     }
 
-    th.age {
-      width: 30%;
+    th.duration {
+      text-align: center;
+    }
+
+    th.price {
+      text-align: center;
+    }
+
+    td.duration {
+      text-align: center;
+    }
+
+    td.price {
       text-align: center;
     }
 
     th.edit {
-      width: 5%;
+      width: 6%;
       text-align: left;
     }
 
     th.delete {
       width: 6%;
       text-align: left;
-    }
-
-    td.age {
-      text-align: center;
     }
 
     td.edit {
@@ -112,7 +96,7 @@ export const StudentList = styled.div`
     }
 
     td.delete {
-      padding-left: 5px;
+      padding-left: 15px;
       text-align: right;
 
       button {

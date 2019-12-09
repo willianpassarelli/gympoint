@@ -22,6 +22,10 @@ export const Container = styled.div`
       ::placeholder {
         color: #999;
       }
+
+      :disabled {
+        background: #f5f5f5;
+      }
     }
   }
 
