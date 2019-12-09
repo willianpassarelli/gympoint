@@ -5,7 +5,8 @@ import Route from './Route';
 import SignIn from '../pages/SignIn';
 import Student from '../pages/Student/List';
 import StudentForm from '../pages/Student/Form';
-import Plan from '../pages/Plan';
+import Plan from '../pages/Plan/List';
+import PlanForm from '../pages/Plan/Form';
 import Enrollment from '../pages/Enrollment';
 import HelpOrder from '../pages/HelpOrder';
 
@@ -20,7 +21,14 @@ export default function Routes() {
         component={StudentForm}
         isPrivate
       />
-      <Route path="/plan" component={Plan} isPrivate />
+
+      <Route path="/plan/list" component={Plan} isPrivate />
+      <Route
+        path={['/plan/form/:id', '/plan/form']}
+        component={PlanForm}
+        isPrivate
+      />
+
       <Route path="/enrollment" component={Enrollment} isPrivate />
       <Route path="/helpOrder" component={HelpOrder} isPrivate />
     </Switch>

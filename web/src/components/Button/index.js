@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { MdKeyboardArrowLeft, MdCheck } from 'react-icons/md';
+import { MdKeyboardArrowLeft, MdCheck, MdAdd } from 'react-icons/md';
 
-import { Container } from './styles';
+import { Container, RegisterButton, BackButton } from './styles';
 
-export default function Button({ save, back, path }) {
+export default function Button({ save, back, register, path }) {
   return (
     <Container>
       {save && (
@@ -14,10 +13,16 @@ export default function Button({ save, back, path }) {
         </button>
       )}
       {back && (
-        <Link to={path}>
+        <BackButton to={path}>
           <MdKeyboardArrowLeft size={20} color="#fff" />
           <span>VOLTAR</span>
-        </Link>
+        </BackButton>
+      )}
+      {register && (
+        <RegisterButton to={path}>
+          <MdAdd size={20} color="#fff" />
+          <span>CADASTRAR</span>
+        </RegisterButton>
       )}
     </Container>
   );
