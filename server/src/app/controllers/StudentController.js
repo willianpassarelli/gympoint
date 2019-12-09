@@ -4,7 +4,8 @@ import Student from '../models/Student';
 
 class StudentController {
   async index(req, res) {
-    const { search, id } = req.query;
+    const { search, page = 1 } = req.query;
+
     const where = {};
 
     if (search) {
@@ -13,14 +14,18 @@ class StudentController {
       };
     }
 
-    if (id) {
-      const students = await Student.findByPk(id);
+    if (req.params.id) {
+      const students = await Student.findByPk(req.params.id, {
+        attributes: ['id', 'name', 'email', 'age', 'weight', 'height'],
+      });
 
       return res.json(students);
     }
 
     const students = await Student.findAll({
       where,
+      limit: 10,
+      offset: (page - 1) * 10,
       attributes: ['id', 'name', 'email', 'age', 'weight', 'height'],
     });
 

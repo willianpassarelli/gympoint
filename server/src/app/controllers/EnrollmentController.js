@@ -11,6 +11,26 @@ class EnrollmentController {
   async index(req, res) {
     const { page = 1 } = req.query;
 
+    if (req.params.id) {
+      const enrollments = await Enrollment.findByPk(req.params.id, {
+        attributes: ['id', 'start_date', 'end_date', 'price', 'active'],
+        include: [
+          {
+            model: Student,
+            as: 'student',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: Plan,
+            as: 'plan',
+            attributes: ['id', 'title', 'price'],
+          },
+        ],
+      });
+
+      return res.json(enrollments);
+    }
+
     const enrollments = await Enrollment.findAll({
       attributes: ['id', 'start_date', 'end_date', 'price', 'active'],
       limit: 20,
@@ -29,7 +49,7 @@ class EnrollmentController {
       ],
     });
 
-    res.json(enrollments);
+    return res.json(enrollments);
   }
 
   async store(req, res) {
