@@ -7,7 +7,8 @@ import Student from '../pages/Student/List';
 import StudentForm from '../pages/Student/Form';
 import Plan from '../pages/Plan/List';
 import PlanForm from '../pages/Plan/Form';
-import Enrollment from '../pages/Enrollment';
+import Enrollment from '../pages/Enrollment/List';
+import EnrollmentForm from '../pages/Enrollment/Form';
 import HelpOrder from '../pages/HelpOrder';
 
 export default function Routes() {
@@ -29,7 +30,13 @@ export default function Routes() {
         isPrivate
       />
 
-      <Route path="/enrollment" component={Enrollment} isPrivate />
+      <Route path="/enrollment/list" component={Enrollment} isPrivate />
+      <Route
+        path={['/enrollment/form/:id', '/enrollment/form']}
+        component={EnrollmentForm}
+        isPrivate
+      />
+
       <Route path="/helpOrder" component={HelpOrder} isPrivate />
     </Switch>
   );
