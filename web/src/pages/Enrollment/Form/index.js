@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { addMonths, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
 import { Form, Input, Select } from '@rocketseat/unform';
+import pt from 'date-fns/locale/pt';
+import * as Yup from 'yup';
 
 import Button from '~/components/Button';
 import DatePicker from './DatePicker';
@@ -12,6 +13,12 @@ import { formatPrice } from '~/util/format';
 import api from '~/services/api';
 
 import { Container, Column, Row, Field } from './styles';
+
+const schema = Yup.object().shape({
+  student_id: Yup.string().required('É obrigatório selecionar um aluno'),
+  plan_id: Yup.string().required('É obrigatório selecionar um plano'),
+  start_date: Yup.date().required('É obrigatório selecionar uma data'),
+});
 
 export default function EnrollmentForm({ match }) {
   const { id } = match.params;
@@ -111,16 +118,22 @@ export default function EnrollmentForm({ match }) {
 
   return (
     <Container>
-      <Form onSubmit={id ? handleEdit : handleSubmit} initialData={enrollment}>
-        <header>
-          <strong>
-            {id ? 'Edição de matrícula' : 'Cadastro de matrícula'}
-          </strong>
-          <div>
-            <Button back path="/enrollment/list" />
-            <Button save />
-          </div>
-        </header>
+      <Form
+        onSubmit={id ? handleEdit : handleSubmit}
+        initialData={enrollment}
+        schema={schema}
+      >
+        <div>
+          <header>
+            <strong>
+              {id ? 'Edição de matrícula' : 'Cadastro de matrícula'}
+            </strong>
+            <div>
+              <Button back path="/enrollment/list" />
+              <Button save />
+            </div>
+          </header>
+        </div>
 
         <Column>
           <Field nospace>

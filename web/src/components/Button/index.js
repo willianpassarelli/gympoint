@@ -9,19 +9,19 @@ export default function Button({ save, back, register, path }) {
       {save && (
         <button type="submit">
           <MdCheck size={20} color="#fff" />
-          <span>SALVAR</span>
+          <h1>SALVAR</h1>
         </button>
       )}
       {back && (
         <BackButton to={path}>
           <MdKeyboardArrowLeft size={20} color="#fff" />
-          <span>VOLTAR</span>
+          <h1>VOLTAR</h1>
         </BackButton>
       )}
       {register && (
         <RegisterButton to={path}>
           <MdAdd size={20} color="#fff" />
-          <span>CADASTRAR</span>
+          <h1>CADASTRAR</h1>
         </RegisterButton>
       )}
     </Container>
