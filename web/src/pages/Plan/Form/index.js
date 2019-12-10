@@ -19,16 +19,12 @@ export default function PlanForm({ match }) {
 
   useEffect(() => {
     async function loadPlan() {
-      try {
-        const response = await api.get('plans', {
-          params: {
-            id,
-          },
-        });
+      if (id) {
+        const response = await api.get(`plans/${id}`);
 
         setPlan(response.data);
-      } catch (err) {
-        toast.error('Erro ao carregar dados do plano');
+        setDuration(response.data.duration);
+        setPrice(response.data.price);
       }
     }
     loadPlan();
@@ -51,7 +47,7 @@ export default function PlanForm({ match }) {
 
   async function handleEdit({ title, duration, price }) {
     try {
-      await api.put(`students/${id}`, { title, duration, price });
+      await api.put(`plans/${id}`, { title, duration, price });
 
       toast.success('Dados do plano atualizado com sucesso!');
     } catch (err) {

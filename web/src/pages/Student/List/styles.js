@@ -21,6 +21,10 @@ export const Container = styled.div`
     div {
       display: flex;
       flex-direction: row;
+
+      svg {
+        margin-right: 8px;
+      }
     }
   }
 `;
