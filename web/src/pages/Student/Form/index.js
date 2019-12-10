@@ -2,12 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Form, Input } from '@rocketseat/unform';
 import InputMask from 'react-input-mask';
+import * as Yup from 'yup';
 
 import Button from '~/components/Button';
 
 import api from '~/services/api';
 
 import { Container, Column, Row, Field } from './styles';
+
+const schema = Yup.object().shape({
+  name: Yup.string().required('O nome é obrigatório'),
+  email: Yup.string().required('O e-mail obrigatório'),
+  age: Yup.string().required('A idade obrigatória'),
+  height: Yup.string().required('A altura é obrigatória'),
+  weight: Yup.string().required('O peso é obrigatório'),
+});
 
 export default function StudentForm({ match }) {
   const { id } = match.params;
@@ -51,7 +60,11 @@ export default function StudentForm({ match }) {
 
   return (
     <Container>
-      <Form onSubmit={id ? handleEdit : handleSubmit} initialData={student}>
+      <Form
+        onSubmit={id ? handleEdit : handleSubmit}
+        initialData={student}
+        schema={schema}
+      >
         <header>
           <strong>{id ? 'Edição de aluno' : 'Cadastro de aluno'}</strong>
           <div>

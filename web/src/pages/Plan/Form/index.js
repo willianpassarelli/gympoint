@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { Form, Input } from '@rocketseat/unform';
+import * as Yup from 'yup';
 
 import Button from '~/components/Button';
 
@@ -9,6 +10,12 @@ import { formatPrice } from '~/util/format';
 import api from '~/services/api';
 
 import { Container, Column, Row, Field } from './styles';
+
+const schema = Yup.object().shape({
+  title: Yup.string().required('O título é obrigatório'),
+  duration: Yup.string().required('A duração do plano é obrigatório'),
+  price: Yup.string().required('O valor do plano é obrigatório'),
+});
 
 export default function PlanForm({ match }) {
   const { id } = match.params;
@@ -57,7 +64,11 @@ export default function PlanForm({ match }) {
 
   return (
     <Container>
-      <Form onSubmit={id ? handleEdit : handleSubmit} initialData={plan}>
+      <Form
+        onSubmit={id ? handleEdit : handleSubmit}
+        initialData={plan}
+        schema={schema}
+      >
         <header>
           <strong>{id ? 'Edição de plano' : 'Cadastro de plano'}</strong>
           <div>

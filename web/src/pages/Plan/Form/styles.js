@@ -27,6 +27,14 @@ export const Container = styled.div`
         background: #f5f5f5;
       }
     }
+
+    span {
+      color: #ee4d64;
+      align-self: flex-start;
+      margin: 0 0 10px;
+      font-weight: bold;
+      font-size: 12px;
+    }
   }
 
   header {

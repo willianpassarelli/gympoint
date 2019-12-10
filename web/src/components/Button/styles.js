@@ -26,6 +26,11 @@ export const Container = styled.div`
     svg {
       margin-right: 8px;
     }
+
+    h1 {
+      font-size: 14px;
+      color: #fff;
+    }
   }
 `;
 
@@ -50,6 +55,11 @@ export const BackButton = styled(Link)`
   svg {
     margin-right: 8px;
   }
+
+  h1 {
+    font-size: 14px;
+    color: #fff;
+  }
 `;
 
 export const RegisterButton = styled(Link)`
@@ -71,5 +81,10 @@ export const RegisterButton = styled(Link)`
 
   svg {
     margin-right: 8px;
+  }
+
+  h1 {
+    font-size: 14px;
+    color: #fff;
   }
 `;
