@@ -19,11 +19,7 @@ export default function StudentForm({ match }) {
   useEffect(() => {
     async function loadData() {
       if (id) {
-        const response = await api.get('students', {
-          params: {
-            id,
-          },
-        });
+        const response = await api.get(`students/${id}`);
 
         setStudent(response.data);
         setHeight(response.data.height);

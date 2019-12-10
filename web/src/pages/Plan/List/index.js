@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
+import { formatPrice } from '~/util/format';
+
 import Modal from '~/components/Modal';
 import Button from '~/components/Button';
 
@@ -18,7 +20,20 @@ export default function Plan() {
     try {
       const response = await api.get('plans');
 
-      setPlans(response.data);
+      const data = response.data.map(plan => {
+        const duration =
+          plan.duration === 1
+            ? `${plan.duration} mês`
+            : `${plan.duration} meses`;
+
+        return {
+          ...plan,
+          price: formatPrice(plan.price),
+          duration,
+        };
+      });
+
+      setPlans(data);
     } catch (err) {
       toast.error('Erro ao carregar lista de planos');
     }
