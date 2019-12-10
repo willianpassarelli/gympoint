@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { addMonths, isBefore, parseISO } from 'date-fns';
+import { isBefore, parseISO } from 'date-fns';
 
 import Plan from '../models/Plan';
 import Enrollment from '../models/Enrollment';
@@ -55,6 +55,8 @@ class EnrollmentController {
   async store(req, res) {
     const schema = Yup.object().shape({
       start_date: Yup.date().required(),
+      end_date: Yup.date().required(),
+      price: Yup.string().required(),
       student_id: Yup.number().required(),
       plan_id: Yup.number().required(),
     });
@@ -63,7 +65,7 @@ class EnrollmentController {
       return res.status(400).json({ error: 'Validations fails' });
     }
 
-    const { student_id, plan_id, start_date } = req.body;
+    const { student_id, plan_id, start_date, end_date, price } = req.body;
 
     if (isBefore(parseISO(start_date), new Date())) {
       return res.status(400).json({ error: 'Past dates are not permitted' });
@@ -77,10 +79,6 @@ class EnrollmentController {
     const { name, email } = await Student.findOne({
       where: { id: student_id },
     });
-
-    const end_date = addMonths(parseISO(start_date), plan.duration);
-
-    const price = plan.duration * plan.price;
 
     const enrollment = Object.assign(req.body, { end_date, price });
 
@@ -111,6 +109,8 @@ class EnrollmentController {
   async update(req, res) {
     const schema = Yup.object().shape({
       start_date: Yup.date(),
+      end_date: Yup.date(),
+      price: Yup.string(),
       student_id: Yup.number(),
       plan_id: Yup.number(),
     });
@@ -121,19 +121,31 @@ class EnrollmentController {
 
     const enrollment = await Enrollment.findByPk(req.params.id);
 
-    const { start_date, plan_id } = req.body;
+    const { student_id, start_date, end_date, plan_id, price } = req.body;
 
     if (isBefore(parseISO(start_date), new Date())) {
       return res.status(400).json({ error: 'Past dates are not permitted' });
     }
 
-    const plan = await Plan.findOne({ where: { id: plan_id } });
+    const plan = await Plan.findOne({
+      where: { id: plan_id },
+      attributes: ['title', 'duration', 'price'],
+    });
 
-    const end_date = addMonths(parseISO(start_date), plan.duration);
-
-    const price = plan.duration * plan.price;
+    const { name, email } = await Student.findOne({
+      where: { id: student_id },
+    });
 
     await enrollment.update({ start_date, end_date, plan_id, price });
+
+    await Queue.add(WelcomeMail.key, {
+      name,
+      email,
+      start_date,
+      end_date,
+      price,
+      plan,
+    });
 
     return res.json(enrollment);
   }
