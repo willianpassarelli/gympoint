@@ -2,33 +2,34 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { addMonths, format, parseISO } from 'date-fns';
 import { Form, Input, Select } from '@rocketseat/unform';
+
 import pt from 'date-fns/locale/pt';
 import * as Yup from 'yup';
 
 import Button from '~/components/Button';
+import AsyncSelect from '~/components/AsyncSelect';
 import DatePicker from './DatePicker';
 
 import { formatPrice } from '~/util/format';
 
+import history from '~/services/history';
 import api from '~/services/api';
 
 import { Container, Column, Row, Field } from './styles';
 
 const schema = Yup.object().shape({
-  student_id: Yup.string().required('É obrigatório selecionar um aluno'),
   plan_id: Yup.string().required('É obrigatório selecionar um plano'),
-  start_date: Yup.date().required('É obrigatório selecionar uma data'),
+  start_date: Yup.string().required('É obrigatório selecionar uma data'),
 });
 
 export default function EnrollmentForm({ match }) {
   const { id } = match.params;
 
-  const [students, setStudents] = useState([]);
   const [duration, setDuration] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [startDate, setStartDate] = useState('');
   const [plans, setPlans] = useState([]);
-  const [studentId, setStudentId] = useState('');
+  const [studentData, setStudentData] = useState('');
   const [planId, setPlanId] = useState([]);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function EnrollmentForm({ match }) {
         const response = await api.get(`enrollment/${id}`);
         const { student, plan, start_date } = response.data;
 
-        setStudentId(student.id);
+        setStudentData({ id: student.id, title: student.name });
         setPlanId(plan.id);
         setDuration(plan.duration);
         setTotalPrice(plan.price);
@@ -59,19 +60,6 @@ export default function EnrollmentForm({ match }) {
     return '';
   }, [startDate, duration]);
 
-  async function loadStudents() {
-    const response = await api.get('students');
-
-    const data = response.data.map(student => {
-      return {
-        id: student.id,
-        title: student.name,
-      };
-    });
-
-    setStudents(data);
-  }
-
   async function loadPlans() {
     const response = await api.get('plans');
 
@@ -79,30 +67,23 @@ export default function EnrollmentForm({ match }) {
   }
 
   useEffect(() => {
-    loadStudents();
     loadPlans();
   }, []);
 
-  async function handleSubmit(data, { resetForm }) {
+  async function handleSubmit(data) {
     try {
-      const { student_id, plan_id, start_date } = data;
       const price = duration * totalPrice;
       const end_date = addMonths(startDate, duration);
-      const dataEnrollment = {
-        student_id,
-        plan_id,
-        start_date,
+      const dataEnrollment = Object.assign(data, {
+        student_id: studentData.id,
         end_date,
         price,
-      };
+      });
 
       await api.post('enrollment', dataEnrollment);
 
-      resetForm();
-      setDuration(0);
-      setTotalPrice(0);
-      setStudentId(0);
-      setPlanId(0);
+      history.push('/enrollment/list');
+
       toast.success('Matrícula realizada com sucesso!');
     } catch (err) {
       toast.error('Erro ao realizar matrícula.');
@@ -112,8 +93,10 @@ export default function EnrollmentForm({ match }) {
   async function handleEdit(data) {
     try {
       const price = duration * totalPrice;
+      const end_date = addMonths(startDate, duration);
       const updateEnrollment = Object.assign(data, {
-        end_date: endDate,
+        student_id: studentData.id,
+        end_date,
         price,
       });
 
@@ -125,9 +108,26 @@ export default function EnrollmentForm({ match }) {
     }
   }
 
+  async function loadStudents(inputValue) {
+    const response = await api.get(`students`, {
+      params: {
+        search: inputValue,
+      },
+    });
+
+    const data = response.data.map(student => {
+      return {
+        id: student.id,
+        title: student.name,
+      };
+    });
+
+    return data;
+  }
+
   function onPlanChange(e) {
-    setPlanId(e.target.value);
     const find = plans.find(plan => String(plan.id) === e.target.value);
+    setPlanId(e.target.value);
     setDuration(find.duration);
     setTotalPrice(find.price);
   }
@@ -150,12 +150,12 @@ export default function EnrollmentForm({ match }) {
         <Column>
           <Field nospace>
             <strong>ALUNO</strong>
-            <Select
+            <AsyncSelect
               name="student_id"
               placeholder="Buscar aluno"
-              options={students}
-              value={studentId}
-              onChange={e => setStudentId(e.target.value)}
+              value={studentData}
+              onChange={change => setStudentData(change)}
+              loadOptions={loadStudents}
             />
           </Field>
           <Row>
