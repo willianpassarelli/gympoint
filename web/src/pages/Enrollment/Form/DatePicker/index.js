@@ -6,10 +6,15 @@ import pt from 'date-fns/locale/pt';
 
 import { useField } from '@rocketseat/unform';
 
-export default function DatePicker({ name, placeholder, onChange, disabled }) {
+export default function DatePicker({
+  name,
+  placeholder,
+  onChange,
+  selected,
+  disabled,
+}) {
   const ref = useRef(null);
-  const { fieldName, registerField, defaultValue, error } = useField(name);
-  const [selected, setSelected] = useState(defaultValue);
+  const { fieldName, registerField, error } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -24,7 +29,6 @@ export default function DatePicker({ name, placeholder, onChange, disabled }) {
 
   function handleChange(date) {
     onChange(date);
-    setSelected(date);
   }
 
   return (
