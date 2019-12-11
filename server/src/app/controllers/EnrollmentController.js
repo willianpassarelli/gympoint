@@ -67,7 +67,7 @@ class EnrollmentController {
 
     const { student_id, plan_id, start_date, end_date, price } = req.body;
 
-    if (isBefore(parseISO(start_date), new Date())) {
+    if (isBefore(start_date, new Date())) {
       return res.status(400).json({ error: 'Past dates are not permitted' });
     }
 
@@ -123,28 +123,16 @@ class EnrollmentController {
 
     const { student_id, start_date, end_date, plan_id, price } = req.body;
 
-    if (isBefore(parseISO(start_date), new Date())) {
+    if (isBefore(start_date, new Date())) {
       return res.status(400).json({ error: 'Past dates are not permitted' });
     }
 
-    const plan = await Plan.findOne({
-      where: { id: plan_id },
-      attributes: ['title', 'duration', 'price'],
-    });
-
-    const { name, email } = await Student.findOne({
-      where: { id: student_id },
-    });
-
-    await enrollment.update({ start_date, end_date, plan_id, price });
-
-    await Queue.add(WelcomeMail.key, {
-      name,
-      email,
+    await enrollment.update({
+      student_id,
       start_date,
       end_date,
+      plan_id,
       price,
-      plan,
     });
 
     return res.json(enrollment);
