@@ -23,7 +23,7 @@ class EnrollmentController {
           {
             model: Plan,
             as: 'plan',
-            attributes: ['id', 'title', 'price'],
+            attributes: ['id', 'title', 'price', 'duration'],
           },
         ],
       });
@@ -44,7 +44,7 @@ class EnrollmentController {
         {
           model: Plan,
           as: 'plan',
-          attributes: ['id', 'title', 'price'],
+          attributes: ['id', 'title', 'price', 'duration'],
         },
       ],
     });
