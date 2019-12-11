@@ -1,25 +1,16 @@
 import React, { useRef, useEffect } from 'react';
-import AsyncSelect from 'react-select/async';
 
 import { useField } from '@rocketseat/unform';
 
-export default function ReactSelect({
-  name,
-  label,
-  options,
-  multiple,
-  ...rest
-}) {
+import { Select } from './styles';
+
+export default function ReactSelect({ name, value, loadOptions, ...rest }) {
   const ref = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
 
   function parseSelectValue(selectRef) {
     const selectValue = selectRef.state.value;
-    if (!multiple) {
-      return selectValue ? selectValue.id : '';
-    }
-
-    return selectValue ? selectValue.map(option => option.id) : [];
+    return selectValue ? selectValue.id : '';
   }
 
   useEffect(() => {
@@ -34,27 +25,18 @@ export default function ReactSelect({
     });
   }, [ref.current, fieldName]); // eslint-disable-line
 
-  function getDefaultValue() {
-    if (!defaultValue) return null;
-
-    if (!multiple) {
-      return options.find(option => option.id === defaultValue);
-    }
-
-    return options.filter(option => defaultValue.includes(option.id));
-  }
-
   return (
     <>
-      {label && <label htmlFor={fieldName}>{label}</label>}
-
-      <AsyncSelect
+      <Select
+        className="react-select-container"
+        classNamePrefix="react-select"
         name={fieldName}
-        aria-label={fieldName}
-        options={options}
-        isMulti={multiple}
-        defaultValue={getDefaultValue()}
+        loadOptions={loadOptions}
+        defaultValue={defaultValue}
+        value={value}
         ref={ref}
+        cacheOptions
+        defaultOptions
         getOptionValue={option => option.id}
         getOptionLabel={option => option.title}
         {...rest}
