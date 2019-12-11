@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { toast } from 'react-toastify';
-import { addMonths, format } from 'date-fns';
+import { addMonths, format, parseISO } from 'date-fns';
 import { Form, Input, Select } from '@rocketseat/unform';
 import pt from 'date-fns/locale/pt';
 import * as Yup from 'yup';
@@ -23,12 +23,45 @@ const schema = Yup.object().shape({
 export default function EnrollmentForm({ match }) {
   const { id } = match.params;
 
-  const [enrollment, setEnrollment] = useState([]);
   const [students, setStudents] = useState([]);
   const [duration, setDuration] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [startDate, setStartDate] = useState('');
   const [plans, setPlans] = useState([]);
+  const [enrollment, setEnrollment] = useState([]);
+
+  useEffect(() => {
+    async function loadEnrollment() {
+      if (id) {
+        const response = await api.get(`enrollment/${id}`);
+        const { student, plan, start_date, end_date, price } = response.data;
+
+        const data = {
+          student_id: student.id,
+          plan_id: plan.id,
+          start_date,
+          end_date,
+          price,
+        };
+
+        console.tron.log('modify', data);
+        setEnrollment(data);
+      }
+    }
+    loadEnrollment();
+  }, [id]);
+
+  const formattedPrice = useMemo(() => {
+    return formatPrice(duration * totalPrice);
+  }, [duration, totalPrice]);
+
+  const endDate = useMemo(() => {
+    if (startDate && duration) {
+      const changeDate = addMonths(startDate, duration);
+      return format(changeDate, 'dd/MM/yyyy', { locale: pt });
+    }
+    return '';
+  }, [startDate, duration]);
 
   async function loadStudents() {
     const response = await api.get('students');
@@ -50,31 +83,9 @@ export default function EnrollmentForm({ match }) {
   }
 
   useEffect(() => {
-    async function loadEnrollment() {
-      const response = await api.get(`enrollment/${id}`);
-
-      console.tron.log(response.data);
-      setEnrollment(response.data);
-    }
-    loadEnrollment();
-  }, [id]);
-
-  useEffect(() => {
     loadStudents();
     loadPlans();
   }, []);
-
-  const formattedPrice = useMemo(() => {
-    return formatPrice(duration * totalPrice);
-  }, [duration, totalPrice]);
-
-  const endDate = useMemo(() => {
-    if (startDate && duration) {
-      const changeDate = addMonths(startDate, duration);
-      return format(changeDate, 'dd/MM/yyyy', { locale: pt });
-    }
-    return '';
-  }, [startDate, duration]);
 
   async function handleSubmit(data, { resetForm }) {
     try {
@@ -157,7 +168,6 @@ export default function EnrollmentForm({ match }) {
             <Field>
               <strong>DATA DE INÍCIO</strong>
               <DatePicker
-                id="start_date"
                 name="start_date"
                 placeholder="Escolha a data"
                 onChange={date => setStartDate(date)}
@@ -165,11 +175,11 @@ export default function EnrollmentForm({ match }) {
             </Field>
             <Field>
               <strong>DATA DE TÉRMINO</strong>
-              <Input id="end_date" name="end_date" value={endDate} disabled />
+              <Input name="end_date" value={endDate} disabled />
             </Field>
             <Field>
               <strong>VALOR TOTAL</strong>
-              <Input id="price" name="price" value={formattedPrice} disabled />
+              <Input name="price" value={formattedPrice} disabled />
             </Field>
           </Row>
         </Column>
