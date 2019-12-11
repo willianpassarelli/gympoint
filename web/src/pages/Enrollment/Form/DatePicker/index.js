@@ -52,6 +52,7 @@ export default function DatePicker({
 DatePicker.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
+  selected: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
 };
@@ -59,4 +60,5 @@ DatePicker.propTypes = {
 DatePicker.defaultProps = {
   onChange: PropTypes.func,
   disabled: false,
+  selected: '',
 };
