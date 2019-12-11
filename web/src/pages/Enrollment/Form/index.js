@@ -28,24 +28,20 @@ export default function EnrollmentForm({ match }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [startDate, setStartDate] = useState('');
   const [plans, setPlans] = useState([]);
-  const [enrollment, setEnrollment] = useState([]);
+  const [studentId, setStudentId] = useState('');
+  const [planId, setPlanId] = useState([]);
 
   useEffect(() => {
     async function loadEnrollment() {
       if (id) {
         const response = await api.get(`enrollment/${id}`);
-        const { student, plan, start_date, end_date, price } = response.data;
+        const { student, plan, start_date } = response.data;
 
-        const data = {
-          student_id: student.id,
-          plan_id: plan.id,
-          start_date,
-          end_date,
-          price,
-        };
-
-        console.tron.log('modify', data);
-        setEnrollment(data);
+        setStudentId(student.id);
+        setPlanId(plan.id);
+        setDuration(plan.duration);
+        setTotalPrice(plan.price);
+        setStartDate(parseISO(start_date));
       }
     }
     loadEnrollment();
@@ -105,6 +101,8 @@ export default function EnrollmentForm({ match }) {
       resetForm();
       setDuration(0);
       setTotalPrice(0);
+      setStudentId(0);
+      setPlanId(0);
       toast.success('Matrícula realizada com sucesso!');
     } catch (err) {
       toast.error('Erro ao realizar matrícula.');
@@ -113,7 +111,13 @@ export default function EnrollmentForm({ match }) {
 
   async function handleEdit(data) {
     try {
-      // await api.put();
+      const price = duration * totalPrice;
+      const updateEnrollment = Object.assign(data, {
+        end_date: endDate,
+        price,
+      });
+
+      await api.put(`enrollment/${id}`, updateEnrollment);
 
       toast.success('Dados da matrícula atualizados com sucesso!');
     } catch (err) {
@@ -122,6 +126,7 @@ export default function EnrollmentForm({ match }) {
   }
 
   function onPlanChange(e) {
+    setPlanId(e.target.value);
     const find = plans.find(plan => String(plan.id) === e.target.value);
     setDuration(find.duration);
     setTotalPrice(find.price);
@@ -129,11 +134,7 @@ export default function EnrollmentForm({ match }) {
 
   return (
     <Container>
-      <Form
-        onSubmit={id ? handleEdit : handleSubmit}
-        initialData={enrollment}
-        schema={schema}
-      >
+      <Form onSubmit={id ? handleEdit : handleSubmit} schema={schema}>
         <div>
           <header>
             <strong>
@@ -153,6 +154,8 @@ export default function EnrollmentForm({ match }) {
               name="student_id"
               placeholder="Buscar aluno"
               options={students}
+              value={studentId}
+              onChange={e => setStudentId(e.target.value)}
             />
           </Field>
           <Row>
@@ -162,6 +165,7 @@ export default function EnrollmentForm({ match }) {
                 name="plan_id"
                 placeholder="Selecione o plano"
                 options={plans}
+                value={planId}
                 onChange={onPlanChange}
               />
             </Field>
@@ -170,6 +174,7 @@ export default function EnrollmentForm({ match }) {
               <DatePicker
                 name="start_date"
                 placeholder="Escolha a data"
+                selected={startDate}
                 onChange={date => setStartDate(date)}
               />
             </Field>
