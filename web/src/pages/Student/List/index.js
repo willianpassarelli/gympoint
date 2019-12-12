@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { MdSearch } from 'react-icons/md';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import Modal from '~/components/Modal';
 import Button from '~/components/Button';
@@ -9,7 +10,7 @@ import Loading from '~/components/Loading';
 
 import api from '~/services/api';
 
-import { Container, SearchBar, StudentList } from './styles';
+import { Container, SearchBar, StudentList, Pagination } from './styles';
 
 export default function Student() {
   const [students, setStudents] = useState([]);
@@ -17,6 +18,8 @@ export default function Student() {
   const [search, setSearch] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [results, setResults] = useState(false);
 
   useEffect(() => {
     async function loadStudents() {
@@ -24,9 +27,15 @@ export default function Student() {
         const response = await api.get('students', {
           params: {
             search,
+            page,
           },
         });
 
+        if (response.data.length !== 10) {
+          setResults(true);
+        } else {
+          setResults(false);
+        }
         setStudents(response.data);
         setLoading(false);
       } catch (err) {
@@ -34,20 +43,20 @@ export default function Student() {
       }
     }
     loadStudents();
-  }, [search]);
+  }, [page, search]);
 
   async function reloadList() {
     try {
-      const response = await api.get('students');
+      const response = await api.get('students', {
+        params: {
+          page,
+        },
+      });
 
       setStudents(response.data);
     } catch (err) {
       toast.error('Erro ao carregar os dados...');
     }
-  }
-
-  function handleSearch(e) {
-    setSearch(e.target.value);
   }
 
   async function handleDelete() {
@@ -73,6 +82,10 @@ export default function Student() {
     setStudentId('');
   }
 
+  async function handlePage(e) {
+    await setPage(e === 'back' ? page - 1 : page + 1);
+  }
+
   if (loading) {
     return <Loading />;
   }
@@ -88,7 +101,7 @@ export default function Student() {
             <input
               name="search"
               placeholder="Buscar aluno"
-              onChange={handleSearch}
+              onChange={e => setSearch(e.target.value)}
             />
           </SearchBar>
         </div>
@@ -129,6 +142,23 @@ export default function Student() {
             </tbody>
           </table>
         )}
+        <Pagination>
+          <button
+            type="button"
+            disabled={page === 1}
+            onClick={() => handlePage('back')}
+          >
+            <FaChevronLeft />
+          </button>
+          <span>Página {page}</span>
+          <button
+            type="button"
+            disabled={results}
+            onClick={() => handlePage('next')}
+          >
+            <FaChevronRight />
+          </button>
+        </Pagination>
       </StudentList>
       <Modal
         text="Você tem certeza que deseja apagar os dados do aluno?"

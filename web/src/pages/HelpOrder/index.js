@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import ModalAnswer from '~/components/ModalAnswer';
 import Loading from '~/components/Loading';
 
 import api from '~/services/api';
 
-import { Container, HelpList } from './styles';
+import { Container, HelpList, Pagination } from './styles';
 
 export default function HelpOrder() {
   const [helpOrders, setHelpOrders] = useState([]);
@@ -14,10 +15,22 @@ export default function HelpOrder() {
   const [question, setQuestion] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [results, setResults] = useState(false);
 
   async function loadHelpOrder() {
     try {
-      const response = await api.get('help-orders');
+      const response = await api.get('help-orders', {
+        params: {
+          page,
+        },
+      });
+
+      if (response.data.length !== 10) {
+        setResults(true);
+      } else {
+        setResults(false);
+      }
 
       setHelpOrders(response.data);
       setLoading(false);
@@ -28,7 +41,7 @@ export default function HelpOrder() {
 
   useEffect(() => {
     loadHelpOrder();
-  }, []);
+  }, [page]);
 
   async function handleSubmit(data) {
     try {
@@ -54,6 +67,10 @@ export default function HelpOrder() {
     setIsOpen(false);
     setHelpOrderId('');
     setQuestion('');
+  }
+
+  async function handlePage(e) {
+    await setPage(e === 'back' ? page - 1 : page + 1);
   }
 
   if (loading) {
@@ -93,6 +110,23 @@ export default function HelpOrder() {
             </tbody>
           </table>
         )}
+        <Pagination>
+          <button
+            type="button"
+            disabled={page === 1}
+            onClick={() => handlePage('back')}
+          >
+            <FaChevronLeft />
+          </button>
+          <span>Página {page}</span>
+          <button
+            type="button"
+            disabled={results}
+            onClick={() => handlePage('next')}
+          >
+            <FaChevronRight />
+          </button>
+        </Pagination>
       </HelpList>
       <ModalAnswer
         text={question}

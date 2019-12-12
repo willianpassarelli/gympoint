@@ -126,3 +126,33 @@ export const PlanList = styled.div`
     }
   }
 `;
+
+export const Pagination = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  button {
+    transition: opacity 0.25s ease-out;
+    border: 0;
+    margin: 0 10px;
+
+    cursor: pointer;
+
+    &[disabled] {
+      opacity: 0.35;
+    }
+  }
+
+  svg {
+    color: #de3b3b;
+    width: 25px;
+    height: 25px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 700;
+  }
+`;

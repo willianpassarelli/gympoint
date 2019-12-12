@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { MdCheckCircle } from 'react-icons/md';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
@@ -11,17 +12,23 @@ import Loading from '~/components/Loading';
 
 import api from '~/services/api';
 
-import { Container, EnrollmentList } from './styles';
+import { Container, EnrollmentList, Pagination } from './styles';
 
 export default function Enrollment() {
   const [enrollments, setEnrollments] = useState([]);
   const [enrollmentId, setEnrollmentId] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [results, setResults] = useState(false);
 
   async function loadEnrollments() {
     try {
-      const response = await api.get('enrollment');
+      const response = await api.get('enrollment', {
+        params: {
+          page,
+        },
+      });
 
       const data = response.data.map(enrollment => {
         const start_date = format(
@@ -43,6 +50,12 @@ export default function Enrollment() {
         };
       });
 
+      if (response.data.length !== 10) {
+        setResults(true);
+      } else {
+        setResults(false);
+      }
+
       setEnrollments(data);
       setLoading(false);
     } catch (err) {
@@ -52,7 +65,7 @@ export default function Enrollment() {
 
   useEffect(() => {
     loadEnrollments();
-  }, []);
+  }, [page]);
 
   async function handleDelete() {
     try {
@@ -75,6 +88,10 @@ export default function Enrollment() {
   function closeModal() {
     setIsOpen(false);
     setEnrollmentId('');
+  }
+
+  async function handlePage(e) {
+    await setPage(e === 'back' ? page - 1 : page + 1);
   }
 
   if (loading) {
@@ -137,6 +154,23 @@ export default function Enrollment() {
             </tbody>
           </table>
         )}
+        <Pagination>
+          <button
+            type="button"
+            disabled={page === 1}
+            onClick={() => handlePage('back')}
+          >
+            <FaChevronLeft />
+          </button>
+          <span>Página {page}</span>
+          <button
+            type="button"
+            disabled={results}
+            onClick={() => handlePage('next')}
+          >
+            <FaChevronRight />
+          </button>
+        </Pagination>
       </EnrollmentList>
       <Modal
         text="Você tem certeza que deseja apagar esta matrícula?"

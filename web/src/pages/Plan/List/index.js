@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import { formatPrice } from '~/util/format';
 
@@ -10,17 +11,23 @@ import Loading from '~/components/Loading';
 
 import api from '~/services/api';
 
-import { Container, PlanList } from './styles';
+import { Container, PlanList, Pagination } from './styles';
 
 export default function Plan() {
   const [plans, setPlans] = useState([]);
   const [planId, setPlanId] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [results, setResults] = useState(false);
 
   async function loadPlans() {
     try {
-      const response = await api.get('plans');
+      const response = await api.get('plans', {
+        params: {
+          page,
+        },
+      });
 
       const data = response.data.map(plan => {
         const duration =
@@ -35,6 +42,12 @@ export default function Plan() {
         };
       });
 
+      if (response.data.length !== 10) {
+        setResults(true);
+      } else {
+        setResults(false);
+      }
+
       setPlans(data);
       setLoading(false);
     } catch (err) {
@@ -44,7 +57,7 @@ export default function Plan() {
 
   useEffect(() => {
     loadPlans();
-  }, []);
+  }, [loadPlans, page]);
 
   async function handleDelete() {
     try {
@@ -67,6 +80,10 @@ export default function Plan() {
   function closeModal() {
     setIsOpen(false);
     setPlanId('');
+  }
+
+  async function handlePage(e) {
+    await setPage(e === 'back' ? page - 1 : page + 1);
   }
 
   if (loading) {
@@ -117,6 +134,23 @@ export default function Plan() {
             </tbody>
           </table>
         )}
+        <Pagination>
+          <button
+            type="button"
+            disabled={page === 1}
+            onClick={() => handlePage('back')}
+          >
+            <FaChevronLeft />
+          </button>
+          <span>Página {page}</span>
+          <button
+            type="button"
+            disabled={results}
+            onClick={() => handlePage('next')}
+          >
+            <FaChevronRight />
+          </button>
+        </Pagination>
       </PlanList>
       <Modal
         text="Você tem certeza que deseja apagar este plano?"
