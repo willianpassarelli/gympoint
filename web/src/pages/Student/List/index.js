@@ -5,6 +5,7 @@ import { MdSearch } from 'react-icons/md';
 
 import Modal from '~/components/Modal';
 import Button from '~/components/Button';
+import Loading from '~/components/Loading';
 
 import api from '~/services/api';
 
@@ -15,6 +16,7 @@ export default function Student() {
   const [studentId, setStudentId] = useState('');
   const [search, setSearch] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadStudents() {
@@ -26,6 +28,7 @@ export default function Student() {
         });
 
         setStudents(response.data);
+        setLoading(false);
       } catch (err) {
         toast.error('Erro ao carregar os dados...');
       }
@@ -70,6 +73,10 @@ export default function Student() {
     setStudentId('');
   }
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
       <header>
@@ -88,34 +95,40 @@ export default function Student() {
       </header>
 
       <StudentList>
-        <table>
-          <thead>
-            <tr>
-              <th className="name">NOME</th>
-              <th>E-MAIL</th>
-              <th className="age">IDADE</th>
-              <th className="edit" />
-              <th className="delete" />
-            </tr>
-          </thead>
-          <tbody>
-            {students.map(student => (
-              <tr key={String(student.id)}>
-                <td>{student.name}</td>
-                <td>{student.email}</td>
-                <td className="age">{student.age}</td>
-                <td className="edit">
-                  <Link to={`/student/form/${student.id}`}>editar</Link>
-                </td>
-                <td className="delete">
-                  <button type="button" onClick={() => openModal(student.id)}>
-                    apagar
-                  </button>
-                </td>
+        {students.length === 0 ? (
+          <div>
+            <h1>Lista vazia</h1>
+          </div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th className="name">NOME</th>
+                <th>E-MAIL</th>
+                <th className="age">IDADE</th>
+                <th className="edit" />
+                <th className="delete" />
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {students.map(student => (
+                <tr key={String(student.id)}>
+                  <td>{student.name}</td>
+                  <td>{student.email}</td>
+                  <td className="age">{student.age}</td>
+                  <td className="edit">
+                    <Link to={`/student/form/${student.id}`}>editar</Link>
+                  </td>
+                  <td className="delete">
+                    <button type="button" onClick={() => openModal(student.id)}>
+                      apagar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </StudentList>
       <Modal
         text="Você tem certeza que deseja apagar os dados do aluno?"

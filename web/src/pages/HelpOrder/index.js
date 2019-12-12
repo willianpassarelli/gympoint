@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import ModalAnswer from '~/components/ModalAnswer';
+import Loading from '~/components/Loading';
 
 import api from '~/services/api';
 
@@ -12,12 +13,14 @@ export default function HelpOrder() {
   const [helpOrderId, setHelpOrderId] = useState('');
   const [question, setQuestion] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function loadHelpOrder() {
     try {
       const response = await api.get('help-orders');
 
       setHelpOrders(response.data);
+      setLoading(false);
     } catch (err) {
       toast.error('Erro a listar os pedidos de auxílio');
     }
@@ -53,6 +56,10 @@ export default function HelpOrder() {
     setQuestion('');
   }
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
       <header>
@@ -60,26 +67,32 @@ export default function HelpOrder() {
       </header>
 
       <HelpList>
-        <table>
-          <thead>
-            <tr>
-              <th>ALUNO</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {helpOrders.map(help => (
-              <tr key={String(help.id)}>
-                <td>{help.student.name}</td>
-                <td className="edit">
-                  <button type="button" onClick={() => openModal(help)}>
-                    responder
-                  </button>
-                </td>
+        {helpOrders.length === 0 ? (
+          <div>
+            <h1>Lista vazia</h1>
+          </div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>ALUNO</th>
+                <th />
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {helpOrders.map(help => (
+                <tr key={String(help.id)}>
+                  <td>{help.student.name}</td>
+                  <td className="edit">
+                    <button type="button" onClick={() => openModal(help)}>
+                      responder
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </HelpList>
       <ModalAnswer
         text={question}
