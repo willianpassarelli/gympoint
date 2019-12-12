@@ -6,6 +6,7 @@ import { formatPrice } from '~/util/format';
 
 import Modal from '~/components/Modal';
 import Button from '~/components/Button';
+import Loading from '~/components/Loading';
 
 import api from '~/services/api';
 
@@ -15,6 +16,7 @@ export default function Plan() {
   const [plans, setPlans] = useState([]);
   const [planId, setPlanId] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function loadPlans() {
     try {
@@ -34,6 +36,7 @@ export default function Plan() {
       });
 
       setPlans(data);
+      setLoading(false);
     } catch (err) {
       toast.error('Erro ao carregar lista de planos');
     }
@@ -66,6 +69,10 @@ export default function Plan() {
     setPlanId('');
   }
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
       <header>
@@ -76,34 +83,40 @@ export default function Plan() {
       </header>
 
       <PlanList>
-        <table>
-          <thead>
-            <tr>
-              <th className="title">TÍTULO</th>
-              <th className="duration">DURAÇÃO</th>
-              <th className="price">VALOR p/ MÊS</th>
-              <th className="edit" />
-              <th className="delete" />
-            </tr>
-          </thead>
-          <tbody>
-            {plans.map(plan => (
-              <tr key={String(plan.id)}>
-                <td>{plan.title}</td>
-                <td className="duration">{plan.duration}</td>
-                <td className="price">{plan.price}</td>
-                <td className="edit">
-                  <Link to={`/plan/form/${plan.id}`}>editar</Link>
-                </td>
-                <td className="delete">
-                  <button type="button" onClick={() => openModal(plan.id)}>
-                    apagar
-                  </button>
-                </td>
+        {plans.length === 0 ? (
+          <div>
+            <h1>Lista vazia</h1>
+          </div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th className="title">TÍTULO</th>
+                <th className="duration">DURAÇÃO</th>
+                <th className="price">VALOR p/ MÊS</th>
+                <th className="edit" />
+                <th className="delete" />
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {plans.map(plan => (
+                <tr key={String(plan.id)}>
+                  <td>{plan.title}</td>
+                  <td className="duration">{plan.duration}</td>
+                  <td className="price">{plan.price}</td>
+                  <td className="edit">
+                    <Link to={`/plan/form/${plan.id}`}>editar</Link>
+                  </td>
+                  <td className="delete">
+                    <button type="button" onClick={() => openModal(plan.id)}>
+                      apagar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </PlanList>
       <Modal
         text="Você tem certeza que deseja apagar este plano?"

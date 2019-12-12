@@ -25,6 +25,16 @@ export const HelpList = styled.div`
   background: #fff;
   border-radius: 4px;
 
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      color: #999;
+    }
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
