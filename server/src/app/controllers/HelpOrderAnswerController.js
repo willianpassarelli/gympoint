@@ -11,8 +11,8 @@ class HelpOrderAnswerController {
 
     const answers = await HelpOrder.findAll({
       where: { answer: null },
-      limit: 20,
-      offset: (page - 1) * 20,
+      limit: 10,
+      offset: (page - 1) * 10,
       include: [
         {
           model: Student,

@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { isBefore } from 'date-fns';
+import { isBefore, parseISO } from 'date-fns';
 
 import Plan from '../models/Plan';
 import Enrollment from '../models/Enrollment';
@@ -33,8 +33,8 @@ class EnrollmentController {
 
     const enrollments = await Enrollment.findAll({
       attributes: ['id', 'start_date', 'end_date', 'price', 'active'],
-      limit: 20,
-      offset: (page - 1) * 20,
+      limit: 10,
+      offset: (page - 1) * 10,
       include: [
         {
           model: Student,
@@ -67,7 +67,7 @@ class EnrollmentController {
 
     const { student_id, plan_id, start_date, end_date, price } = req.body;
 
-    if (isBefore(start_date, new Date())) {
+    if (isBefore(parseISO(start_date), new Date())) {
       return res.status(400).json({ error: 'Past dates are not permitted' });
     }
 
@@ -95,6 +95,7 @@ class EnrollmentController {
     const { id } = await Enrollment.create(enrollment);
 
     await Queue.add(WelcomeMail.key, {
+      student_id,
       name,
       email,
       start_date,
