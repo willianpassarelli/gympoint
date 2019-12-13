@@ -23,11 +23,12 @@ routes.get('/students/:id/help-orders', HelpOrderController.index);
 routes.get('/help-orders/', HelpOrderAnswerController.index);
 routes.post('/help-orders/:id/answer', HelpOrderAnswerController.store);
 
+routes.get('/students/:id', StudentController.index);
+
 routes.use(authMiddleware);
 
 routes.post('/students', StudentController.store);
 routes.get('/students', StudentController.index);
-routes.get('/students/:id', StudentController.index);
 routes.put('/students/:id', StudentController.update);
 routes.delete('/students/:id', StudentController.delete);
 
