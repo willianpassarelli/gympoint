@@ -5,6 +5,7 @@ import Student from '../models/Student';
 
 class HelpOrderController {
   async index(req, res) {
+    const { page = 1 } = req.query;
     const { id } = req.params;
 
     const student = await Student.findOne({ where: { id } });
@@ -15,6 +16,12 @@ class HelpOrderController {
 
     const helpOrders = await HelpOrder.findAll({
       where: { student_id: id },
+      limit: 5,
+      offset: (page - 1) * 5,
+      order: [
+        ['answer', 'NULLS FIRST'],
+        ['id', 'DESC'],
+      ],
       include: [
         {
           model: Student,

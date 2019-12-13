@@ -6,15 +6,21 @@ import Checkin from '../models/Checkin';
 
 class CheckinController {
   async index(req, res) {
+    const { page = 1 } = req.query;
     const { id } = req.params;
 
     const checkStudent = await Student.findByPk(id);
 
     if (!checkStudent) {
-      return res.status(401).json({ error: 'Unidentified Enrollment' });
+      return res.status(401).json({ error: 'Unidentified student' });
     }
 
-    const checkins = await Checkin.findAll({ where: { student_id: id } });
+    const checkins = await Checkin.findAll({
+      where: { student_id: id },
+      limit: 10,
+      offset: (page - 1) * 10,
+      order: [['id', 'DESC']],
+    });
 
     return res.json(checkins);
   }
@@ -25,7 +31,7 @@ class CheckinController {
     const checkStudent = await Student.findByPk(id);
 
     if (!checkStudent) {
-      return res.status(401).json({ error: 'Unidentified Enrollment' });
+      return res.status(401).json({ error: 'Unidentified student' });
     }
 
     const period = subDays(new Date(), 7);
