@@ -1,4 +1,4 @@
-package com.mobile;
+package com.gympoint;
 
 import android.app.Application;
 import android.content.Context;
