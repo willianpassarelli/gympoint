@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* mobileTests.m */; };
+		00E356F31AD99517003FC87E /* GympointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GympointTests.m */; };
 		01B5A27B1B4D46E3B1C6C61F /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ABD0A0D5BB240ADB200655E /* FontAwesome5_Regular.ttf */; };
 		078F9E036ACE49DE9B6B8DC9 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE5C973015E84EA4945BC190 /* AntDesign.ttf */; };
 		0B357473D3574E679C3FE5AD /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68B93BD92C1848A8A3259890 /* MaterialCommunityIcons.ttf */; };
@@ -16,16 +16,16 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2AC220FED8A3B940C61A1B98 /* libPods-mobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5E0425C547A05579E1B38 /* libPods-mobile-tvOS.a */; };
+		2AC220FED8A3B940C61A1B98 /* libPods-Gympoint-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5E0425C547A05579E1B38 /* libPods-Gympoint-tvOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* mobileTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* GympointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GympointTests.m */; };
 		4B7CF42A10C44B5A8C61E9D7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C2270485E944C5CA62BDA1E /* SimpleLineIcons.ttf */; };
 		6D7742F72E604DF7B3E61DA4 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 294EB7CD2DB04A6EB8D8354A /* MaterialIcons.ttf */; };
 		6EFFC869C66C4FC2BD771005 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D45B9276FC134AF89AD7A018 /* Octicons.ttf */; };
-		72BF001819F6336B856A35AD /* libPods-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C00D53663DB764452AA615 /* libPods-mobile.a */; };
-		7D8319CA3BA088C30D4E9C7B /* libPods-mobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B35B430FAE257CE975C2734D /* libPods-mobileTests.a */; };
+		72BF001819F6336B856A35AD /* libPods-Gympoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C00D53663DB764452AA615 /* libPods-Gympoint.a */; };
+		7D8319CA3BA088C30D4E9C7B /* libPods-GympointTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B35B430FAE257CE975C2734D /* libPods-GympointTests.a */; };
 		AF99CB793F664B8990A6F21E /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14E786DB2864477595DF1EED /* Fontisto.ttf */; };
 		B0CC531B604A428CB1D1579C /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A539A43557B4ABAAEFD0995 /* Entypo.ttf */; };
 		B3E17FB6D0B54D70ABC15A7D /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E4309A3E2E04672B2138E54 /* FontAwesome5_Solid.ttf */; };
@@ -34,7 +34,7 @@
 		D71D0BC8F83D4BCDB85BC417 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2249C6B42F545BEA417D3AF /* EvilIcons.ttf */; };
 		DB8D716DE92440038DC98DC6 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AFCA83288949A58F4F583E /* FontAwesome.ttf */; };
 		DD40E870F9B04F92B0B8A6D2 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A914C6151284CA6A2A5ACEC /* Ionicons.ttf */; };
-		E650DF6D5843C1BB69C1969C /* libPods-mobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B351368F0DE66D61CFCD0C8A /* libPods-mobile-tvOSTests.a */; };
+		E650DF6D5843C1BB69C1969C /* libPods-Gympoint-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B351368F0DE66D61CFCD0C8A /* libPods-Gympoint-tvOSTests.a */; };
 		EA9C370929034F119E24253F /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA93CA4CF5BB4DEE8377957C /* Feather.ttf */; };
 /* End PBXBuildFile section */
 
@@ -44,61 +44,61 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = mobile;
+			remoteInfo = Gympoint;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "mobile-tvOS";
+			remoteInfo = "Gympoint-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* mobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* GympointTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GympointTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* mobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobileTests.m; sourceTree = "<group>"; };
-		099777DB998BADE1086F1C03 /* Pods-mobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileTests.debug.xcconfig"; path = "Target Support Files/Pods-mobileTests/Pods-mobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* GympointTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GympointTests.m; sourceTree = "<group>"; };
+		099777DB998BADE1086F1C03 /* Pods-GympointTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GympointTests.debug.xcconfig"; path = "Target Support Files/Pods-GympointTests/Pods-GympointTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0C2270485E944C5CA62BDA1E /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = mobile/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = mobile/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Gympoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gympoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Gympoint/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Gympoint/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = mobile/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mobile/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mobile/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Gympoint/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Gympoint/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Gympoint/main.m; sourceTree = "<group>"; };
 		14E786DB2864477595DF1EED /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
-		19C00D53663DB764452AA615 /* libPods-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19C00D53663DB764452AA615 /* libPods-Gympoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gympoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E4309A3E2E04672B2138E54 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		294EB7CD2DB04A6EB8D8354A /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* mobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* mobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* Gympoint-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gympoint-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Gympoint-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gympoint-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A539A43557B4ABAAEFD0995 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		5A914C6151284CA6A2A5ACEC /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		5ABD0A0D5BB240ADB200655E /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		65C5E0425C547A05579E1B38 /* libPods-mobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		668678170EB3F34934C3B334 /* Pods-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile.debug.xcconfig"; path = "Target Support Files/Pods-mobile/Pods-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		65C5E0425C547A05579E1B38 /* libPods-Gympoint-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gympoint-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		668678170EB3F34934C3B334 /* Pods-Gympoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gympoint.debug.xcconfig"; path = "Target Support Files/Pods-Gympoint/Pods-Gympoint.debug.xcconfig"; sourceTree = "<group>"; };
 		68B93BD92C1848A8A3259890 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		6CCBC798F24A66EB9E2CEF61 /* Pods-mobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-mobile-tvOSTests/Pods-mobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6CCBC798F24A66EB9E2CEF61 /* Pods-Gympoint-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gympoint-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Gympoint-tvOSTests/Pods-Gympoint-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93AFCA83288949A58F4F583E /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		B2249C6B42F545BEA417D3AF /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		B351368F0DE66D61CFCD0C8A /* libPods-mobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B35B430FAE257CE975C2734D /* libPods-mobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B351368F0DE66D61CFCD0C8A /* libPods-Gympoint-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gympoint-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35B430FAE257CE975C2734D /* libPods-GympointTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GympointTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5C973015E84EA4945BC190 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		BFFABD2A6CDBA56501C47875 /* Pods-mobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-mobile-tvOS/Pods-mobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BFFABD2A6CDBA56501C47875 /* Pods-Gympoint-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gympoint-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Gympoint-tvOS/Pods-Gympoint-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C3D749AFA8644A878C22438B /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		C808213461FD7A235586E5E5 /* Pods-mobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileTests.release.xcconfig"; path = "Target Support Files/Pods-mobileTests/Pods-mobileTests.release.xcconfig"; sourceTree = "<group>"; };
-		CBD66E0BF70E65C2E738A6CB /* Pods-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile.release.xcconfig"; path = "Target Support Files/Pods-mobile/Pods-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		C808213461FD7A235586E5E5 /* Pods-GympointTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GympointTests.release.xcconfig"; path = "Target Support Files/Pods-GympointTests/Pods-GympointTests.release.xcconfig"; sourceTree = "<group>"; };
+		CBD66E0BF70E65C2E738A6CB /* Pods-Gympoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gympoint.release.xcconfig"; path = "Target Support Files/Pods-Gympoint/Pods-Gympoint.release.xcconfig"; sourceTree = "<group>"; };
 		D2B14837507F4807A1C0CF50 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		D45B9276FC134AF89AD7A018 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		DA93CA4CF5BB4DEE8377957C /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		E00E091A830A59578670EF5F /* Pods-mobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-mobile-tvOSTests/Pods-mobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		E00E091A830A59578670EF5F /* Pods-Gympoint-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gympoint-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Gympoint-tvOSTests/Pods-Gympoint-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EE1372D467DE40EA9E7B8C09 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		EEF2642770D2675F5553A46A /* Pods-mobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-mobile-tvOS/Pods-mobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		EEF2642770D2675F5553A46A /* Pods-Gympoint-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gympoint-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Gympoint-tvOS/Pods-Gympoint-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D8319CA3BA088C30D4E9C7B /* libPods-mobileTests.a in Frameworks */,
+				7D8319CA3BA088C30D4E9C7B /* libPods-GympointTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72BF001819F6336B856A35AD /* libPods-mobile.a in Frameworks */,
+				72BF001819F6336B856A35AD /* libPods-Gympoint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AC220FED8A3B940C61A1B98 /* libPods-mobile-tvOS.a in Frameworks */,
+				2AC220FED8A3B940C61A1B98 /* libPods-Gympoint-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,20 +130,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E650DF6D5843C1BB69C1969C /* libPods-mobile-tvOSTests.a in Frameworks */,
+				E650DF6D5843C1BB69C1969C /* libPods-Gympoint-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* mobileTests */ = {
+		00E356EF1AD99517003FC87E /* GympointTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* mobileTests.m */,
+				00E356F21AD99517003FC87E /* GympointTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = mobileTests;
+			path = GympointTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -154,7 +154,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* mobile */ = {
+		13B07FAE1A68108700A75B9A /* Gympoint */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -165,20 +165,20 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = mobile;
+			name = Gympoint;
 			sourceTree = "<group>";
 		};
 		26AA65EB31B7B8CABD85BE55 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				668678170EB3F34934C3B334 /* Pods-mobile.debug.xcconfig */,
-				CBD66E0BF70E65C2E738A6CB /* Pods-mobile.release.xcconfig */,
-				BFFABD2A6CDBA56501C47875 /* Pods-mobile-tvOS.debug.xcconfig */,
-				EEF2642770D2675F5553A46A /* Pods-mobile-tvOS.release.xcconfig */,
-				6CCBC798F24A66EB9E2CEF61 /* Pods-mobile-tvOSTests.debug.xcconfig */,
-				E00E091A830A59578670EF5F /* Pods-mobile-tvOSTests.release.xcconfig */,
-				099777DB998BADE1086F1C03 /* Pods-mobileTests.debug.xcconfig */,
-				C808213461FD7A235586E5E5 /* Pods-mobileTests.release.xcconfig */,
+				668678170EB3F34934C3B334 /* Pods-Gympoint.debug.xcconfig */,
+				CBD66E0BF70E65C2E738A6CB /* Pods-Gympoint.release.xcconfig */,
+				BFFABD2A6CDBA56501C47875 /* Pods-Gympoint-tvOS.debug.xcconfig */,
+				EEF2642770D2675F5553A46A /* Pods-Gympoint-tvOS.release.xcconfig */,
+				6CCBC798F24A66EB9E2CEF61 /* Pods-Gympoint-tvOSTests.debug.xcconfig */,
+				E00E091A830A59578670EF5F /* Pods-Gympoint-tvOSTests.release.xcconfig */,
+				099777DB998BADE1086F1C03 /* Pods-GympointTests.debug.xcconfig */,
+				C808213461FD7A235586E5E5 /* Pods-GympointTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -188,10 +188,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				19C00D53663DB764452AA615 /* libPods-mobile.a */,
-				65C5E0425C547A05579E1B38 /* libPods-mobile-tvOS.a */,
-				B351368F0DE66D61CFCD0C8A /* libPods-mobile-tvOSTests.a */,
-				B35B430FAE257CE975C2734D /* libPods-mobileTests.a */,
+				19C00D53663DB764452AA615 /* libPods-Gympoint.a */,
+				65C5E0425C547A05579E1B38 /* libPods-Gympoint-tvOS.a */,
+				B351368F0DE66D61CFCD0C8A /* libPods-Gympoint-tvOSTests.a */,
+				B35B430FAE257CE975C2734D /* libPods-GympointTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,9 +229,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* mobile */,
+				13B07FAE1A68108700A75B9A /* Gympoint */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* mobileTests */,
+				00E356EF1AD99517003FC87E /* GympointTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				6926201F18754E5681CB20D9 /* Resources */,
@@ -245,10 +245,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* mobile.app */,
-				00E356EE1AD99517003FC87E /* mobileTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* mobile-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* mobile-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Gympoint.app */,
+				00E356EE1AD99517003FC87E /* GympointTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Gympoint-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Gympoint-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,9 +256,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* mobileTests */ = {
+		00E356ED1AD99517003FC87E /* GympointTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "mobileTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "GympointTests" */;
 			buildPhases = (
 				C0E6A50FC9FFC41C82B79BDC /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -270,14 +270,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = mobileTests;
-			productName = mobileTests;
-			productReference = 00E356EE1AD99517003FC87E /* mobileTests.xctest */;
+			name = GympointTests;
+			productName = GympointTests;
+			productReference = 00E356EE1AD99517003FC87E /* GympointTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* mobile */ = {
+		13B07F861A680F5B00A75B9A /* Gympoint */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "mobile" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Gympoint" */;
 			buildPhases = (
 				62B0DD5427EF2A4655B216F0 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -291,14 +291,14 @@
 			);
 			dependencies = (
 			);
-			name = mobile;
-			productName = mobile;
-			productReference = 13B07F961A680F5B00A75B9A /* mobile.app */;
+			name = Gympoint;
+			productName = Gympoint;
+			productReference = 13B07F961A680F5B00A75B9A /* Gympoint.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* mobile-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Gympoint-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "mobile-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Gympoint-tvOS" */;
 			buildPhases = (
 				947541BFC9AB0902386F52FE /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -311,14 +311,14 @@
 			);
 			dependencies = (
 			);
-			name = "mobile-tvOS";
-			productName = "mobile-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* mobile-tvOS.app */;
+			name = "Gympoint-tvOS";
+			productName = "Gympoint-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Gympoint-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* mobile-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Gympoint-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "mobile-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Gympoint-tvOSTests" */;
 			buildPhases = (
 				B040B1B766F347D6F3F79A8A /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -330,9 +330,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "mobile-tvOSTests";
-			productName = "mobile-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* mobile-tvOSTests.xctest */;
+			name = "Gympoint-tvOSTests";
+			productName = "Gympoint-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* Gympoint-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -362,7 +362,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "mobile" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Gympoint" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -376,10 +376,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* mobile */,
-				00E356ED1AD99517003FC87E /* mobileTests */,
-				2D02E47A1E0B4A5D006451C7 /* mobile-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* mobile-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Gympoint */,
+				00E356ED1AD99517003FC87E /* GympointTests */,
+				2D02E47A1E0B4A5D006451C7 /* Gympoint-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Gympoint-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -469,7 +469,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobile/Pods-mobile-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Gympoint/Pods-Gympoint-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -508,7 +508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobile/Pods-mobile-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gympoint/Pods-Gympoint-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		62B0DD5427EF2A4655B216F0 /* [CP] Check Pods Manifest.lock */ = {
@@ -526,7 +526,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mobile-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Gympoint-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -548,7 +548,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mobile-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Gympoint-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -570,7 +570,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mobile-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Gympoint-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -592,7 +592,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mobileTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-GympointTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -644,7 +644,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* mobileTests.m in Sources */,
+				00E356F31AD99517003FC87E /* GympointTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +670,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* mobileTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* GympointTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,12 +679,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* mobile */;
+			target = 13B07F861A680F5B00A75B9A /* Gympoint */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* mobile-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Gympoint-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -696,7 +696,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = mobile;
+			path = Gympoint;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -704,14 +704,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 099777DB998BADE1086F1C03 /* Pods-mobileTests.debug.xcconfig */;
+			baseConfigurationReference = 099777DB998BADE1086F1C03 /* Pods-GympointTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = mobileTests/Info.plist;
+				INFOPLIST_FILE = GympointTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -721,17 +721,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile.app/mobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gympoint.app/Gympoint";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C808213461FD7A235586E5E5 /* Pods-mobileTests.release.xcconfig */;
+			baseConfigurationReference = C808213461FD7A235586E5E5 /* Pods-GympointTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = mobileTests/Info.plist;
+				INFOPLIST_FILE = GympointTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -741,19 +741,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile.app/mobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gympoint.app/Gympoint";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 668678170EB3F34934C3B334 /* Pods-mobile.debug.xcconfig */;
+			baseConfigurationReference = 668678170EB3F34934C3B334 /* Pods-Gympoint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = K7G7W7U47T;
-				INFOPLIST_FILE = mobile/Info.plist;
+				INFOPLIST_FILE = Gympoint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -761,19 +761,19 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.gympoint;
-				PRODUCT_NAME = mobile;
+				PRODUCT_NAME = Gympoint;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBD66E0BF70E65C2E738A6CB /* Pods-mobile.release.xcconfig */;
+			baseConfigurationReference = CBD66E0BF70E65C2E738A6CB /* Pods-Gympoint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K7G7W7U47T;
-				INFOPLIST_FILE = mobile/Info.plist;
+				INFOPLIST_FILE = Gympoint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -781,14 +781,14 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.gympoint;
-				PRODUCT_NAME = mobile;
+				PRODUCT_NAME = Gympoint;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFFABD2A6CDBA56501C47875 /* Pods-mobile-tvOS.debug.xcconfig */;
+			baseConfigurationReference = BFFABD2A6CDBA56501C47875 /* Pods-Gympoint-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -799,14 +799,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "mobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "Gympoint-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.mobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Gympoint-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -816,7 +816,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEF2642770D2675F5553A46A /* Pods-mobile-tvOS.release.xcconfig */;
+			baseConfigurationReference = EEF2642770D2675F5553A46A /* Pods-Gympoint-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -827,14 +827,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "mobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "Gympoint-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.mobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Gympoint-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -844,7 +844,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CCBC798F24A66EB9E2CEF61 /* Pods-mobile-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 6CCBC798F24A66EB9E2CEF61 /* Pods-Gympoint-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -854,24 +854,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "mobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Gympoint-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.mobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Gympoint-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile-tvOS.app/mobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gympoint-tvOS.app/Gympoint-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E00E091A830A59578670EF5F /* Pods-mobile-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = E00E091A830A59578670EF5F /* Pods-Gympoint-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -881,17 +881,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "mobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Gympoint-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.mobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Gympoint-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile-tvOS.app/mobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gympoint-tvOS.app/Gympoint-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1000,7 +1000,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "mobileTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "GympointTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1009,7 +1009,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "mobile" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Gympoint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1018,7 +1018,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "mobile-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Gympoint-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1027,7 +1027,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "mobile-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Gympoint-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1036,7 +1036,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "mobile" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Gympoint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

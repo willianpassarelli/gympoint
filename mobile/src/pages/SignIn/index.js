@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { Image, Alert } from 'react-native';
+import { Image } from 'react-native';
+
+import { useDispatch } from 'react-redux';
+
+import { signInRequest } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/logo.png';
 import Button from '~/components/Button';
@@ -7,11 +11,13 @@ import Background from '~/components/Background';
 
 import { Container, Form, FormInput } from './styles';
 
-export default function SignIn({ navigation }) {
+export default function SignIn() {
+  const dispatch = useDispatch();
+
   const [idUser, setIdUser] = useState();
 
   function handleSubmit() {
-    navigation.navigate('Checkin');
+    dispatch(signInRequest(idUser));
   }
 
   return (
