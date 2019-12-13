@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { parseISO, formatDistanceStrict } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-
+import { withNavigationFocus } from 'react-navigation';
 import { useSelector } from 'react-redux';
 
 import api from '~/services/api';
@@ -23,57 +23,70 @@ import {
   Question,
 } from './styles';
 
-export default function HelpOrder() {
+function HelpOrder({ navigation, isFocused }) {
   const id = useSelector(state => state.user.profile);
 
   const [helpOrders, setHelpOrders] = useState([]);
 
-  useEffect(() => {
-    async function loadHelpOrders() {
-      try {
-        const response = await api.get(`students/${id}/help-orders`);
+  async function loadHelpOrders() {
+    try {
+      const response = await api.get(`students/${id}/help-orders`);
 
-        const data = response.data.map(helpOrder => {
-          const createdAt = formatDistanceStrict(
-            parseISO(helpOrder.createdAt),
-            new Date(),
-            {
-              locale: pt,
-              addSuffix: true,
-            }
-          );
+      const data = response.data.map(helpOrder => {
+        const createdAt = formatDistanceStrict(
+          parseISO(helpOrder.createdAt),
+          new Date(),
+          {
+            locale: pt,
+            addSuffix: true,
+          }
+        );
 
-          const answer_at =
-            helpOrder.answer_at &&
-            formatDistanceStrict(parseISO(helpOrder.answer_at), new Date(), {
-              locale: pt,
-              addSuffix: true,
-            });
-          return {
-            ...helpOrder,
-            createdAt,
-            answer_at,
-          };
-        });
+        const answer_at =
+          helpOrder.answer_at &&
+          formatDistanceStrict(parseISO(helpOrder.answer_at), new Date(), {
+            locale: pt,
+            addSuffix: true,
+          });
+        return {
+          ...helpOrder,
+          createdAt,
+          answer_at,
+        };
+      });
 
-        setHelpOrders(data);
-      } catch (err) {
-        Alert.alert('Pedido de auxílio', 'Erro a carregar lista');
-      }
+      setHelpOrders(data);
+    } catch (err) {
+      Alert.alert('Pedido de auxílio', 'Erro a carregar lista');
     }
-    loadHelpOrders();
-  }, [id]);
+  }
+
+  useEffect(() => {
+    if (isFocused) {
+      loadHelpOrders();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFocused, id]);
 
   return (
     <Background>
       <Header />
       <Container>
-        <Button>Novo pedido de auxílio</Button>
+        <Button onPress={() => navigation.navigate('New')}>
+          Novo pedido de auxílio
+        </Button>
         <HelpOrderList
           data={helpOrders}
           keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
-            <Card>
+            <Card
+              onPress={() =>
+                item.answer &&
+                navigation.navigate('Answer', {
+                  item,
+                })
+              }
+            >
               <HelpOrderAnswer>
                 <AnswerIcon>
                   <Icon
@@ -98,9 +111,4 @@ export default function HelpOrder() {
   );
 }
 
-HelpOrder.navigationOptions = {
-  tabBarLabel: 'Pedir ajuda',
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="live-help" size={20} color={tintColor} />
-  ),
-};
+export default withNavigationFocus(HelpOrder);
