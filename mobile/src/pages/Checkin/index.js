@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { parseISO, formatDistanceStrict } from 'date-fns';
@@ -25,39 +25,53 @@ export default function Checkin() {
 
   const [checkins, setCheckins] = useState([]);
 
-  useEffect(() => {
-    async function loadCheckins() {
-      try {
-        const response = await api.get(`students/${id}/checkins`);
+  const loadCheckins = useCallback(async () => {
+    try {
+      const response = await api.get(`students/${id}/checkins`);
 
-        const data = response.data.map(checkin => {
-          const dateFormatted = formatDistanceStrict(
-            parseISO(checkin.createdAt),
-            new Date(),
-            {
-              locale: pt,
-              addSuffix: true,
-            }
-          );
-          return {
-            ...checkin,
-            createdAt: dateFormatted,
-          };
-        });
+      const data = response.data.map(checkin => {
+        const dateFormatted = formatDistanceStrict(
+          parseISO(checkin.createdAt),
+          new Date(),
+          {
+            locale: pt,
+            addSuffix: true,
+          }
+        );
+        return {
+          ...checkin,
+          createdAt: dateFormatted,
+        };
+      });
 
-        setCheckins(data);
-      } catch (err) {
-        Alert.alert('Checkins', 'Erro a carregar lista');
-      }
+      setCheckins(data);
+    } catch (err) {
+      Alert.alert('Checkins', 'Erro a carregar lista');
     }
-    loadCheckins();
   }, [id]);
+
+  useEffect(() => {
+    loadCheckins();
+  }, [id, loadCheckins]);
+
+  async function handleSubmit() {
+    try {
+      await api.post(`students/${id}/checkins`);
+
+      loadCheckins();
+    } catch (err) {
+      Alert.alert(
+        'Erro realizar check-in',
+        'Você já fez 5 check-ins esta semana.'
+      );
+    }
+  }
 
   return (
     <Background>
       <Header />
       <Container>
-        <Button>Novo check-in</Button>
+        <Button onPress={handleSubmit}>Novo check-in</Button>
         <CheckinList
           data={checkins}
           keyExtractor={item => String(item.id)}

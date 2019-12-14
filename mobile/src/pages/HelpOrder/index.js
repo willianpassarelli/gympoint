@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { parseISO, formatDistanceStrict } from 'date-fns';
@@ -28,7 +28,7 @@ function HelpOrder({ navigation, isFocused }) {
 
   const [helpOrders, setHelpOrders] = useState([]);
 
-  async function loadHelpOrders() {
+  const loadHelpOrders = useCallback(async () => {
     try {
       const response = await api.get(`students/${id}/help-orders`);
 
@@ -59,14 +59,13 @@ function HelpOrder({ navigation, isFocused }) {
     } catch (err) {
       Alert.alert('Pedido de auxílio', 'Erro a carregar lista');
     }
-  }
+  }, [id]);
 
   useEffect(() => {
     if (isFocused) {
       loadHelpOrders();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFocused, id]);
+  }, [isFocused, id, loadHelpOrders]);
 
   return (
     <Background>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image } from 'react-native';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { signInRequest } from '~/store/modules/auth/actions';
 
@@ -12,9 +12,10 @@ import Background from '~/components/Background';
 import { Container, Form, FormInput } from './styles';
 
 export default function SignIn() {
-  const dispatch = useDispatch();
-
   const [idUser, setIdUser] = useState();
+
+  const loading = useSelector(state => state.auth.loading);
+  const dispatch = useDispatch();
 
   function handleSubmit() {
     dispatch(signInRequest(idUser));
@@ -31,7 +32,9 @@ export default function SignIn() {
             value={idUser}
             onChangeText={setIdUser}
           />
-          <Button onPress={handleSubmit}>Entrar no sistema</Button>
+          <Button onPress={handleSubmit} loading={loading}>
+            Entrar no sistema
+          </Button>
         </Form>
       </Container>
     </Background>
