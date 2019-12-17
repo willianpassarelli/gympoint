@@ -39,11 +39,11 @@ Entre na pasta server e execute o comando abaixo para obter todas as dependênci
 yarn install ou npm install
 ```
 
-Após instalação, entre no arquivo **".env.example"**, apague o **".example"** e faça as configurações coloque a informações necessárias para conexão com o banco.
+Após instalação, entre no arquivo **".env.example"**, apague o **".example"** e faça as configurações necessárias para conexão com o banco.
 
 No projeto também foi utilizado o envio de e-mails, para configurar faça uma caixa de e-mail através do site https://mailtrap.io/, ao efetuar a criação você receberá todos os dados para conexão, onde serão inseridos no arquivo **".env"**.
 
-Para monitoramento de erros, foi utilizado o sentry (https://sentry.io/) faça uma conta, e ao criar um projeto selecione a opção **"Express"**, ele irá passa um link (DSN), copie o mesmo e cole no arquivo **src/config/sentry.js**
+Para monitoramento de erros, foi utilizado o sentry (https://sentry.io/) faça uma conta, e ao criar um projeto selecione a opção **"Express"**, ao finalizar será informado um link (DSN), copie o mesmo e cole no arquivo **src/config/sentry.js**
 
 Após todas as configurações rode o seguinte comando para criação das tabelas no banco de dados.
 ```
@@ -51,13 +51,13 @@ yarn sequelize db:migrate
 ```
 Se tudo ocorrer bem, ao abrir o **Postbird** irá exibir todas as tabelas ao selecionar o banco "gympoint".
 
-No projeto foi utilizado a autenticação via JWT, para criar um usuário administrador que faz acesso as rotas que apenas o mesmo terá acesso, rode o seguinte comando.
+No projeto foi utilizado a autenticação via JWT, para criar um usuário administrador (para que possa fazer o acesso a específicas rotas), rode o seguinte comando.
 
 ```
 yarn sequelize db:seed:all
 ```
 
-Atualmente existe um arquivo com um email e senha já configurado para esse usuário,
+Atualmente existe um arquivo (seed) com um email e senha já configurado para esse usuário,
 se preferir alterar, acesse a seguinte pasta **src/database/seeds/20191119010017-admin-user.js** e configure o seu usuário como desejar.
 
 Finalmente chegamos a parte em que iremos rodar o servidor, para isso utilize os seguintes comandos.
@@ -114,7 +114,7 @@ Para acesso do admin, utilize o email e senha de administrador que foi criado.
 
 A versão mobile do projeto Gympoint representa a visão do aluno, ou seja, todas funcionalidades presentes nesse projeto são para alunos.
 
-O projeto gympoint mobile, foi desenvolvido através do IOS, no caso de android há configurações no qual não realizei para que o mesmo rode 100%, porem é apenas uma questão de dependências que foram utilizadas e que precisam ser configuradas.
+O projeto gympoint mobile, foi desenvolvido através do **IOS**, no caso de android há configurações no qual não realizei para que o mesmo rode 100%, porem é apenas uma questão de dependências que foram utilizadas e que precisam ser configuradas.
 
 Para execução deste projeto, entre na pasta **"mobile"** e rode o seguinte comando para instalação das dependências:
 
@@ -136,7 +136,7 @@ A Configuração do ip do server que está rodando se encontra no caminho **src/
 Após as configurações rode o seguinte comando para execução do build e instalação em seu device/emulador.
 
 ```
-react-native run-android ou react-native run-ios
+react-native run-ios ou react-native run-android
 ```
 
 Para acesso a aplicação é necessário possuir um aluno cadastrado e matriculado, utilize o ID de cadastro do aluno para acesso ao APP.
