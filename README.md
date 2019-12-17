@@ -112,7 +112,7 @@ Para debug da aplicação foi utilizado o **Reactotron** a configuração do mes
 
 A versão mobile do projeto Gympoint representa a visão do aluno, ou seja, todas funcionalidades presentes nesse projeto são para alunos.
 
-O projeto gympoint mobile, foi desenvolvido através do IOS, no caso de android há configurações no qual não realizei para que o mesmo rode 100%, porem é apenas uma questão de dependências que foram utilizadas e que precisa ser configurada.
+O projeto gympoint mobile, foi desenvolvido através do IOS, no caso de android há configurações no qual não realizei para que o mesmo rode 100%, porem é apenas uma questão de dependências que foram utilizadas e que precisam ser configuradas.
 
 Para execução deste projeto, entre na pasta **"mobile"** e rode o seguinte comando para instalação das dependências:
 
@@ -137,8 +137,12 @@ Após as configurações rode o seguinte comando para execução do build e inst
 react-native run-android ou react-native run-ios
 ```
 
+## Dúvidas
+
+Para quaisquer problemas ou identificações de bugs abra uma nova issue neste repositório. 
+
 ## 📝 Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença MIT.
 
 ---
