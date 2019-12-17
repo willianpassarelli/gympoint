@@ -141,7 +141,7 @@ react-native run-ios ou react-native run-android
 
 Para acesso a aplicação é necessário possuir um aluno cadastrado e matriculado, utilize o ID de cadastro do aluno para acesso ao APP.
 
-## Dúvidas
+## 🔥 Dúvidas
 
 Para quaisquer problemas ou identificações de bugs abra uma nova issue neste repositório. 
 
