@@ -73,7 +73,7 @@ yarn dev
 yarn queue
 ```
 
-Para iniciar uma sessão como administrador, acesse a rotas abaixo para gerar o token de autenticação.
+Para iniciar uma sessão como administrador, acesse a rota abaixo para gerar o token de autenticação.
 
 ```
 http://localhost:3333/sessions
@@ -108,6 +108,8 @@ yarn start
 
 Para debug da aplicação foi utilizado o **Reactotron** a configuração do mesmo se encontra na pasta **src/config/ReactotronConfig.js**
 
+Para acesso do admin, utilize o email e senha de administrador que foi criado.
+
 ### 📱 Mobile (Arquitetura flux) -
 
 A versão mobile do projeto Gympoint representa a visão do aluno, ou seja, todas funcionalidades presentes nesse projeto são para alunos.
@@ -136,6 +138,8 @@ Após as configurações rode o seguinte comando para execução do build e inst
 ```
 react-native run-android ou react-native run-ios
 ```
+
+Para acesso a aplicação é necessário possuir um aluno cadastrado e matriculado, utilize o ID de cadastro do aluno para acesso ao APP.
 
 ## Dúvidas
 
