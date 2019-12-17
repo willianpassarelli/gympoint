@@ -24,6 +24,8 @@ export default function Checkin() {
   const id = useSelector(state => state.user.profile);
 
   const [checkins, setCheckins] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [page, setPage] = useState(1);
 
   const loadCheckins = useCallback(async () => {
     try {
@@ -50,6 +52,33 @@ export default function Checkin() {
     }
   }, [id]);
 
+  async function loadData(paginate = 1) {
+    const response = await api.get(`students/${id}/checkins`, {
+      params: {
+        page: paginate,
+      },
+    });
+
+    const data = response.data.map(checkin => {
+      const dateFormatted = formatDistanceStrict(
+        parseISO(checkin.createdAt),
+        new Date(),
+        {
+          locale: pt,
+          addSuffix: true,
+        }
+      );
+      return {
+        ...checkin,
+        createdAt: dateFormatted,
+      };
+    });
+
+    setRefreshing(false);
+    setPage(paginate);
+    setCheckins(paginate >= 2 ? [...checkins, ...data] : data);
+  }
+
   useEffect(() => {
     loadCheckins();
   }, [id, loadCheckins]);
@@ -67,6 +96,17 @@ export default function Checkin() {
     }
   }
 
+  function loadMore() {
+    const next = page + 1;
+    loadData(next);
+  }
+
+  function refreshList() {
+    setRefreshing(true);
+    setCheckins([]);
+    loadData();
+  }
+
   return (
     <Background>
       <Header />
@@ -74,6 +114,10 @@ export default function Checkin() {
         <Button onPress={handleSubmit}>Novo check-in</Button>
         <CheckinList
           data={checkins}
+          onRefresh={refreshList}
+          refreshing={refreshing}
+          onEndReachedThreshold={0.2}
+          onEndReached={loadMore}
           keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
             <Card>
