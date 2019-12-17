@@ -27,6 +27,8 @@ function HelpOrder({ navigation, isFocused }) {
   const id = useSelector(state => state.user.profile);
 
   const [helpOrders, setHelpOrders] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [page, setPage] = useState(1);
 
   const loadHelpOrders = useCallback(async () => {
     try {
@@ -61,11 +63,57 @@ function HelpOrder({ navigation, isFocused }) {
     }
   }, [id]);
 
+  async function loadData(paginate = 1) {
+    const response = await api.get(`students/${id}/help-orders`, {
+      params: {
+        page: paginate,
+      },
+    });
+
+    const data = response.data.map(helpOrder => {
+      const createdAt = formatDistanceStrict(
+        parseISO(helpOrder.createdAt),
+        new Date(),
+        {
+          locale: pt,
+          addSuffix: true,
+        }
+      );
+
+      const answer_at =
+        helpOrder.answer_at &&
+        formatDistanceStrict(parseISO(helpOrder.answer_at), new Date(), {
+          locale: pt,
+          addSuffix: true,
+        });
+      return {
+        ...helpOrder,
+        createdAt,
+        answer_at,
+      };
+    });
+
+    setRefreshing(false);
+    setPage(paginate);
+    setHelpOrders(paginate >= 2 ? [...helpOrders, ...data] : data);
+  }
+
   useEffect(() => {
     if (isFocused) {
       loadHelpOrders();
     }
   }, [isFocused, id, loadHelpOrders]);
+
+  function loadMore() {
+    const next = page + 1;
+    loadData(next);
+  }
+
+  function refreshList() {
+    setRefreshing(true);
+    setHelpOrders([]);
+    loadData();
+  }
 
   return (
     <Background>
@@ -76,6 +124,10 @@ function HelpOrder({ navigation, isFocused }) {
         </Button>
         <HelpOrderList
           data={helpOrders}
+          onRefresh={refreshList}
+          refreshing={refreshing}
+          onEndReachedThreshold={0.2}
+          onEndReached={loadMore}
           keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
             <Card
