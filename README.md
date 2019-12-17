@@ -36,7 +36,7 @@ Rodando o server -
 
 Entre na pasta server e execute o comando abaixo para obter todas as dependências.
 ```
-yarn install
+yarn install ou npm install
 ```
 
 Após instalação, entre no arquivo **".env.example"**, apague o **".example"** e faça as configurações coloque a informações necessárias para conexão com o banco.
@@ -93,10 +93,10 @@ Para a utilização das rotas criadas no app, exportei um arquivo **"rotas.json"
 
 A versão web do projeto Gympoint representa a visão da academia, ou seja, todas funcionalidades presentes na versão web são para administradores. As funcionalidades para o aluno serão dispostas no aplicativo mobile.
 
-Para execução do projeto web entre na pasta "web", e utilize o comando abaixo:
+Para execução do projeto web entre na pasta **"web"**, e utilize o comando abaixo:
 
 ```
-yarn install
+yarn install ou npm install
 ```
 
 Após a instalação de todas as dependências entre na pasta **src/services/api.js**
@@ -110,7 +110,32 @@ Para debug da aplicação foi utilizado o **Reactotron** a configuração do mes
 
 ### 📱 Mobile (Arquitetura flux) -
 
+A versão mobile do projeto Gympoint representa a visão do aluno, ou seja, todas funcionalidades presentes nesse projeto são para alunos.
 
+O projeto gympoint mobile, foi desenvolvido através do IOS, no caso de android há configurações no qual não realizei para que o mesmo rode 100%, porem é apenas uma questão de dependências que foram utilizadas e que precisa ser configurada.
+
+Para execução deste projeto, entre na pasta **"mobile"** e rode o seguinte comando para instalação das dependências:
+
+```
+yarn install ou npm install
+```
+
+Após instalação das dependências, entre na pasta **"ios"** e utilize o comando abaixo:
+
+```
+pod install
+```
+Apenas para certificar que tudo vai rodar corretamente.
+
+Para debug da aplicação foi utilizado o **Reactotron** a configuração do mesmo se encontra na pasta **src/config/ReactotronConfig.js**, porem para o mobile eu rodei minha aplicação via device com wifi, mas também é possivel rodar em emuladores no qual é necessário que nesse arquivo você configure o IP de acordo como você irá executar a aplicação, no meu caso eu utilizei o IP da minha máquina, você também pode tentar opções como **localhost** ou **10.0.2.2**.
+
+A Configuração do ip do server que está rodando se encontra no caminho **src/services/api.js** para este utilizei o caminho do ip da minha máquina, porem também tente opções como **localhost** ou **10.0.2.2**.
+
+Após as configurações rode o seguinte comando para execução do build e instalação em seu device/emulador.
+
+```
+react-native run-android ou react-native run-ios
+```
 
 ## 📝 Licença
 
