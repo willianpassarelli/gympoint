@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import { isBefore, parseISO } from 'date-fns';
 
 import Plan from '../models/Plan';
@@ -53,18 +52,6 @@ class EnrollmentController {
   }
 
   async store(req, res) {
-    const schema = Yup.object().shape({
-      start_date: Yup.date().required(),
-      end_date: Yup.date().required(),
-      price: Yup.string().required(),
-      student_id: Yup.number().required(),
-      plan_id: Yup.number().required(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validations fails' });
-    }
-
     const { student_id, plan_id, start_date, end_date, price } = req.body;
 
     if (isBefore(parseISO(start_date), new Date())) {
@@ -108,18 +95,6 @@ class EnrollmentController {
   }
 
   async update(req, res) {
-    const schema = Yup.object().shape({
-      start_date: Yup.date(),
-      end_date: Yup.date(),
-      price: Yup.string(),
-      student_id: Yup.number(),
-      plan_id: Yup.number(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validations fails' });
-    }
-
     const enrollment = await Enrollment.findByPk(req.params.id);
 
     const { student_id, start_date, end_date, plan_id, price } = req.body;
