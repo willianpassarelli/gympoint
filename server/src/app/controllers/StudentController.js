@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import { Op } from 'sequelize';
 import Student from '../models/Student';
 
@@ -33,20 +32,6 @@ class StudentController {
   }
 
   async store(req, res) {
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      email: Yup.string()
-        .email()
-        .required(),
-      age: Yup.number().required(),
-      weight: Yup.string().required(),
-      height: Yup.string().required(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validations fails' });
-    }
-
     const { email } = req.body;
 
     const studentExists = await Student.findOne({ where: { email } });
@@ -61,18 +46,6 @@ class StudentController {
   }
 
   async update(req, res) {
-    const schema = Yup.object().shape({
-      name: Yup.string(),
-      email: Yup.string().email(),
-      age: Yup.number(),
-      weight: Yup.string(),
-      height: Yup.string(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
-    }
-
     const student = await Student.findByPk(req.params.id);
 
     const { email } = req.body;
