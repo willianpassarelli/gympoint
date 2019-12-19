@@ -1,10 +1,10 @@
-import { isBefore, parseISO } from 'date-fns';
+import { isBefore } from 'date-fns';
 
 import Plan from '../models/Plan';
 import Enrollment from '../models/Enrollment';
 import Student from '../models/Student';
-import Queue from '../../lib/Queue';
-import WelcomeMail from '../jobs/WelcomeMail';
+
+import CreateEnrollmentService from '../services/CreateEnrollmentService';
 
 class EnrollmentController {
   async index(req, res) {
@@ -52,46 +52,9 @@ class EnrollmentController {
   }
 
   async store(req, res) {
-    const { student_id, plan_id, start_date, end_date, price } = req.body;
+    const enrollment = await CreateEnrollmentService.run(req.body);
 
-    if (isBefore(parseISO(start_date), new Date())) {
-      return res.status(400).json({ error: 'Past dates are not permitted' });
-    }
-
-    const plan = await Plan.findOne({
-      where: { id: plan_id },
-      attributes: ['title', 'duration', 'price'],
-    });
-
-    const { name, email } = await Student.findOne({
-      where: { id: student_id },
-    });
-
-    const enrollment = Object.assign(req.body, { end_date, price });
-
-    const enrollmentExists = await Enrollment.findOne({
-      where: { student_id },
-    });
-
-    if (enrollmentExists) {
-      return res
-        .status(401)
-        .json({ error: 'Student already enrolled in a plan.' });
-    }
-
-    const { id } = await Enrollment.create(enrollment);
-
-    await Queue.add(WelcomeMail.key, {
-      student_id,
-      name,
-      email,
-      start_date,
-      end_date,
-      price,
-      plan,
-    });
-
-    return res.json({ id, name, email, start_date, end_date, price, plan });
+    return res.json(enrollment);
   }
 
   async update(req, res) {
