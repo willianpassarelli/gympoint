@@ -4,11 +4,19 @@ import Plan from '../models/Plan';
 import Enrollment from '../models/Enrollment';
 import Student from '../models/Student';
 
+import Cache from '../../lib/Cache';
+
 import CreateEnrollmentService from '../services/CreateEnrollmentService';
 
 class EnrollmentController {
   async index(req, res) {
     const { page = 1 } = req.query;
+
+    const cached = await Cache.get('enrollments');
+
+    if (cached) {
+      return res.json(cached);
+    }
 
     if (req.params.id) {
       const enrollments = await Enrollment.findByPk(req.params.id, {
@@ -48,6 +56,8 @@ class EnrollmentController {
       ],
     });
 
+    await Cache.set('enrollments', enrollments);
+
     return res.json(enrollments);
   }
 
@@ -81,6 +91,10 @@ class EnrollmentController {
     const enrollment = await Enrollment.findByPk(req.params.id);
 
     await enrollment.destroy();
+
+    if (enrollment) {
+      await Cache.invalidate('enrollments');
+    }
 
     return res.json(enrollment);
   }
