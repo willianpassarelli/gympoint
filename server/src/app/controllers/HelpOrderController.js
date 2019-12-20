@@ -1,10 +1,19 @@
 import HelpOrder from '../models/HelpOrder';
 import Student from '../models/Student';
 
+import Cache from '../../lib/Cache';
+
 class HelpOrderController {
   async index(req, res) {
     const { page = 1 } = req.query;
     const { id } = req.params;
+
+    const cacheKey = `user:${id}:helpOrder:${page}`;
+    const cached = await Cache.get(cacheKey);
+
+    if (cached) {
+      return res.json(cached);
+    }
 
     const student = await Student.findOne({ where: { id } });
 
@@ -29,6 +38,8 @@ class HelpOrderController {
       ],
     });
 
+    await Cache.set(cacheKey, helpOrders);
+
     return res.json(helpOrders);
   }
 
@@ -44,6 +55,11 @@ class HelpOrderController {
     }
 
     const helpOrder = await HelpOrder.create({ question, student_id: id });
+
+    /**
+     * Invalidate cache
+     */
+    await Cache.invalidatePrefix(`user:${id}:helpOrder`);
 
     return res.json(helpOrder);
   }

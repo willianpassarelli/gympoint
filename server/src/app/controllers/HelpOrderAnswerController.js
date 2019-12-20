@@ -1,7 +1,10 @@
 import HelpOrder from '../models/HelpOrder';
 import Student from '../models/Student';
-import Queue from '../../lib/Queue';
+
 import HelpOrderAnswerMail from '../jobs/HelpOrderAnswerMail';
+
+import Queue from '../../lib/Queue';
+import Cache from '../../lib/Cache';
 
 class HelpOrderAnswerController {
   async index(req, res) {
@@ -35,7 +38,7 @@ class HelpOrderAnswerController {
         {
           model: Student,
           as: 'student',
-          attributes: ['name', 'email'],
+          attributes: ['id', 'name', 'email'],
         },
       ],
     });
@@ -47,6 +50,12 @@ class HelpOrderAnswerController {
     await helpOrder.update({ answer, answer_at });
 
     await Queue.add(HelpOrderAnswerMail.key, helpOrder);
+
+    /**
+     * Invalidate cache
+     */
+
+    await Cache.invalidatePrefix(`user:${helpOrder.student.id}:helpOrder`);
 
     return res.json(helpOrder);
   }

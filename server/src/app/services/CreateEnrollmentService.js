@@ -6,6 +6,8 @@ import Student from '../models/Student';
 import Queue from '../../lib/Queue';
 import WelcomeMail from '../jobs/WelcomeMail';
 
+import Cache from '../../lib/Cache';
+
 class CreateEnrollmentService {
   async run({ student_id, start_date, plan_id, end_date, price }) {
     if (isBefore(parseISO(start_date), new Date())) {
@@ -32,6 +34,10 @@ class CreateEnrollmentService {
     }
 
     const enrollment = await Enrollment.create(data);
+
+    if (enrollment) {
+      await Cache.invalidate('enrollments');
+    }
 
     await Queue.add(WelcomeMail.key, {
       student_id,
